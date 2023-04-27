@@ -1,0 +1,51 @@
+<Instagram>
+    <Profile>
+        <User>aguslopez</User>
+        <Name>Agustin</Name>
+        <Surname>Lopez</Surname>
+        <Publications>
+            <User>aguslopez</User>
+            <UploadDate>18/4/2023</UploadDate>
+            <Likes>53</Likes>
+            <Hashtags>
+                <Hashtag>Beach</Hashtag>
+                <Hashtag>Sun</Hashtag>
+                <Hashtag>Friends</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Great pic!</Comment>
+                <Comment>Awesome!</Comment>
+            </Comments>
+        </Publications>
+        <Publications>
+            <User>aguslopez</User>
+            <UploadDate>28/7/2023</UploadDate>
+            <Likes>26</Likes>
+            <Hashtags>
+                <Hashtag>Sport</Hashtag>
+                <Hashtag>Sunday</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>WOW!</Comment>
+            </Comments>
+        </Publications>
+    </Profile>
+    <Profile>
+        <User>juanmurrie</User>
+        <Name>Juan</Name>
+        <Surname>Murrie</Surname>
+        <Publications>
+            <User>juanmurrie</User>
+            <UploadDate>12/2/2023</UploadDate>
+            <Likes>71</Likes>
+            <Hashtags>
+                <Hashtag>Surf</Hashtag>
+                <Hashtag>Los Angeles</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Love it!</Comment>
+                <Comment>Nice wave bro!</Comment>
+            </Comments>
+        </Publications>
+    </Profile>
+</Instagram>

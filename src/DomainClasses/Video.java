@@ -1,4 +1,4 @@
-package Instagram;
+package DomainClasses;
 
 import java.util.ArrayList;
 
