@@ -37,7 +37,6 @@ public class Main {
                     } else {// El objeto Node no es un objeto Element, no se puede acceder a los métodos y propiedades específicos de los elementos
                     }
                 }
-
             }
         }
         catch (Exception e){
