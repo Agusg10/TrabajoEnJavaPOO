@@ -1,6 +1,7 @@
 package DomainClasses;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Video extends Publication{
     private float duration;
@@ -8,8 +9,8 @@ public class Video extends Publication{
     private int frameAmount;
     private int actualFrame;
 
-    public Video(String user, String uploadDate, int likes, ArrayList<String> hashtags, ArrayList<String> comments, float duration, int[] resolution, int frameAmount, int actualFrame) {
-        super(user, uploadDate, likes, hashtags, comments);
+    public Video(String user, Date uploadDate, int likes, float duration, int[] resolution, int frameAmount, int actualFrame) {
+        super(user, uploadDate, likes);
         this.duration = duration;
         this.resolution = resolution;
         this.frameAmount = frameAmount;

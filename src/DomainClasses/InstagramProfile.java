@@ -8,13 +8,16 @@ public class InstagramProfile {
     // list<public> idPublicaciones = new ArrayList<publicacion>    UPCASTING (POLIMORFICO)
     ArrayList<Publication> publications;
 
-    public InstagramProfile(String user, String name, String surname, ArrayList<Album> albums, ArrayList<Publication> publications) {
+    public InstagramProfile(String user, String name, String surname) {
         this.user = user;
         this.name = name;
         this.surname = surname;
-        this.albums = albums; //add setters
-        this.publications = publications; //add setters
     }
+
+    public void addPublication(Publication publi){
+        publications.add(publi);
+    }
+
 
     public String getUser() {
         return user;

@@ -12,19 +12,17 @@ public class Publication {
     public Publication() {
     }
 
-    public Publication(String user, String uploadDate, int likes, ArrayList<String> hashtags, ArrayList<String> comments) {
+    public Publication(String user, Date uploadDate, int likes) {
         this.user = user;
         this.uploadDate = uploadDate;
         this.likes = likes;
-        this.hashtags = hashtags;
-        this.comments = comments;
     }
 
     public String getUser() {
         return user;
     }
 
-    public String getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
