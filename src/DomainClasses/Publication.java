@@ -1,10 +1,11 @@
 package DomainClasses;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Publication {
     private String user;
-    private String uploadDate;
+    private Date uploadDate;
     private int likes;
     ArrayList<String> hashtags; //add setters
     ArrayList<String> comments; //add setters
