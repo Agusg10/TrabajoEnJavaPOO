@@ -44,9 +44,16 @@ public class Publication {
             return "[]";
     }
 
+    private String getComments(){
+        if(comments != null)
+            return comments.toString();
+        else
+            return "[]";
+    }
+
     public String toString(){
         //getHashtags(hashtags);
-        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+getHashtags();
+        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+getHashtags()+" Comments: "+getComments();
     }
 }
 

@@ -35,6 +35,7 @@ public class Main {
         perfil1.addPublication(publi1);
         perfil1.addPublication(publi2);
 
+
         System.out.println((perfil1.getPublications()).get(0).toString());
         System.out.println((perfil1.getPublications()).get(1).toString());
 
