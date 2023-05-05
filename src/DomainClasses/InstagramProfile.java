@@ -1,5 +1,8 @@
 package DomainClasses;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 public class InstagramProfile {
     private final String user;
     private final String name;
@@ -14,10 +17,16 @@ public class InstagramProfile {
         this.surname = surname;
     }
 
-    public void addPublication(Publication publi){
+    public void addPublication(Publication publi){ // agregar ordenado por nombre
+        if(publications == null){
+            publications = new ArrayList<Publication>();
+        }
         publications.add(publi);
     }
 
+    public void sortPublicationsAscending(List<Publication> publi){
+        //Collections.sort(publi);
+    }
 
     public String getUser() {
         return user;
@@ -29,5 +38,9 @@ public class InstagramProfile {
 
     public String getSurname() {
         return surname;
+    }
+
+    public ArrayList<Publication> getPublications() {
+        return publications;
     }
 }

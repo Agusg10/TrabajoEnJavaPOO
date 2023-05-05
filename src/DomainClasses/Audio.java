@@ -7,8 +7,8 @@ public class Audio extends Publication{
     private float duration;
     private float bits;
 
-    public Audio(String user, Date uploadDate, int likes, ArrayList<String> hashtags, ArrayList<String> comments, float duration, float bits) {
-        super(user, uploadDate, likes);
+    public Audio(String user, Date uploadDate, int likes,String description, ArrayList<String> hashtags, ArrayList<String> comments, float duration, float bits) {
+        super(user, uploadDate, likes,description,hashtags,comments);
         this.duration = duration;
         this.bits = bits;
     }

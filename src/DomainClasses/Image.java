@@ -8,8 +8,8 @@ public class Image extends Publication{
     private int width;
     private int height;
 
-    public Image(String user, Date uploadDate, int likes, ArrayList<String> hashtags, ArrayList<String> comments, int[] resolution, int width, int height) {
-        super(user, uploadDate, likes);
+    public Image(String user, Date uploadDate, int likes,String description, ArrayList<String> hashtags, ArrayList<String> comments, int[] resolution, int width, int height) {
+        super(user, uploadDate, likes,description,hashtags,comments);
         this.resolution = resolution;
         this.width = width;
         this.height = height;

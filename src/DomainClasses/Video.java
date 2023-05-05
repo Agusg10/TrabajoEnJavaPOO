@@ -9,8 +9,8 @@ public class Video extends Publication{
     private int frameAmount;
     private int actualFrame;
 
-    public Video(String user, Date uploadDate, int likes, float duration, int[] resolution, int frameAmount, int actualFrame) {
-        super(user, uploadDate, likes);
+    public Video(String user, Date uploadDate, int likes,String description,ArrayList<String> hashtags, ArrayList<String> comments,float duration, int[] resolution, int frameAmount, int actualFrame) {
+        super(user, uploadDate, likes, description,hashtags,comments);
         this.duration = duration;
         this.resolution = resolution;
         this.frameAmount = frameAmount;

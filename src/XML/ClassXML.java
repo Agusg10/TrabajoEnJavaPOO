@@ -13,14 +13,14 @@ import java.io.File;
 public class ClassXML {
     public void loadArch(){
         try {
-            File fileXML = new File("/home/jmurrie/Desktop/TrabajoGrupal/src/XML/DatosTP.xml");//introducir ruta del archivo XML
+            File fileXML = new File("/Users/agustinlopez/Desktop/Facultad/AYED 2/Trabajo Grupal/estadis/src/XML/DatosTP.xml");//introducir ruta del archivo XML
 
             DocumentBuilderFactory DBF = DocumentBuilderFactory.newInstance();
             DocumentBuilder DB = DBF.newDocumentBuilder();
             Document document = DB.parse(fileXML);
             document.getDocumentElement().normalize(); //obtengo la raiz del XML
 
-            System.out.println("Elemento raíz: " + document.getDocumentElement().getNodeName());
+            //System.out.println("Elemento raíz: " + document.getDocumentElement().getNodeName());
             NodeList profiles = document.getElementsByTagName("Profile");
 
             for (int i = 0; i < profiles.getLength(); i++) {
@@ -34,9 +34,9 @@ public class ClassXML {
                     String user = profileElement.getElementsByTagName("User").item(0).getTextContent();
                     String name = profileElement.getElementsByTagName("Name").item(0).getTextContent();
                     String surname = profileElement.getElementsByTagName("Surname").item(0).getTextContent();
-                    System.out.println("Usuario: " + user);
-                    System.out.println("Nombre: " + name);
-                    System.out.println("Apellido: " + surname);
+                    System.out.println("User: " + user);
+                    System.out.println("Name: " + name);
+                    System.out.println("Surname: " + surname);
 
                     System.out.println();
 
@@ -51,7 +51,7 @@ public class ClassXML {
                             Element publicationElement = (Element) publicationNode;
 
                             String type = publicationElement.getElementsByTagName("Type").item(0).getTextContent();
-                            System.out.println("Tipo de publicación: " + type);
+                            System.out.println("Type: " + type);
 
                             if (type.equals("Video")) {
 
@@ -60,9 +60,9 @@ public class ClassXML {
                                 String resY = publicationElement.getElementsByTagName("Y").item(0).getTextContent();
                                 String frameAmount = publicationElement.getElementsByTagName("FrameAmount").item(0).getTextContent();
 
-                                System.out.println("Duración: " + duration);
-                                System.out.println("Resolución: " + resX + "x" + resY);
-                                System.out.println("Cantidad de frames: " + frameAmount);
+                                System.out.println("Duration: " + duration);
+                                System.out.println("Resolution: " + resX + "x" + resY);
+                                System.out.println("Frame Amount: " + frameAmount);
 
                             } else if (type.equals("Image")) {
 
@@ -71,16 +71,16 @@ public class ClassXML {
                                 String length = publicationElement.getElementsByTagName("lenght").item(0).getTextContent();
                                 String height = publicationElement.getElementsByTagName("height").item(0).getTextContent();
 
-                                System.out.println("Resolución: " + resX + "x" + resY);
-                                System.out.println("Largo: " + length);
-                                System.out.println("Altura: " + height);
+                                System.out.println("Resolution: " + resX + "x" + resY);
+                                System.out.println("Lenght: " + length);
+                                System.out.println("Height: " + height);
 
                             } else if (type.equals("Audio")) {
 
                                 String duration = publicationElement.getElementsByTagName("Duration").item(0).getTextContent();
                                 String bits = publicationElement.getElementsByTagName("Bits").item(0).getTextContent();
 
-                                System.out.println("Duración: " + duration);
+                                System.out.println("Duration: " + duration);
                                 System.out.println("Bits: " + bits);
 
                             }
@@ -89,7 +89,7 @@ public class ClassXML {
                             String uploadDate = publicationElement.getElementsByTagName("UploadDate").item(0).getTextContent();
                             String likes = publicationElement.getElementsByTagName("Likes").item(0).getTextContent();
 
-                            System.out.println("Descripción: " + description);
+                            System.out.println("Description: " + description);
                             System.out.println("UploadDate: " + uploadDate);
                             System.out.println("Likes: " + likes);
 
