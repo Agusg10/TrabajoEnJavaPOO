@@ -37,9 +37,16 @@ public class Publication {
 
     public String getDescription(){ return description; }
 
+    private String getHashtags(){
+        if(hashtags != null)
+            return hashtags.toString();
+        else
+            return "[]";
+    }
+
     public String toString(){
         //getHashtags(hashtags);
-        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+hashtags.toString();
+        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+getHashtags();
     }
 }
 
