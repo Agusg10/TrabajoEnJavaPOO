@@ -37,13 +37,9 @@ public class Publication {
 
     public String getDescription(){ return description; }
 
-    private void getHashtags(ArrayList<String> hashtags){
-        System.out.println(hashtags);
-    }
-
     public String toString(){
-        getHashtags(hashtags);
-        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: ";
+        //getHashtags(hashtags);
+        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+hashtags.toString();
     }
 }
 
