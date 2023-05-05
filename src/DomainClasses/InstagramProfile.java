@@ -7,9 +7,9 @@ public class InstagramProfile {
     private final String user;
     private final String name;
     private final String surname;
-    ArrayList<Album> albums;
+    private ArrayList<Album> albums;
     // list<public> idPublicaciones = new ArrayList<publicacion>    UPCASTING (POLIMORFICO)
-    ArrayList<Publication> publications;
+    private ArrayList<Publication> publications;
 
     public InstagramProfile(String user, String name, String surname) {
         this.user = user;
