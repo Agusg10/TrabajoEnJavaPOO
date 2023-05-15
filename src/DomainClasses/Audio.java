@@ -20,4 +20,12 @@ public class Audio extends Publication{
     public float getBits() {
         return bits;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Audio{" +
+                "duration=" + duration +
+                ", bits=" + bits +
+                '}';
+    }
 }

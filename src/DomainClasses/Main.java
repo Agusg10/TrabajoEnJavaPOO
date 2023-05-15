@@ -9,8 +9,11 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         ClassXML test = new ClassXML();
-        test.loadArch();
+        InstagramProfile prof = test.loadXML();
 
+        System.out.println(prof.getPublications().toString());
+
+        /*
         Date date1 = new Date(20220810);
         Date date2 = new Date(20230602);
 
@@ -38,6 +41,7 @@ public class Main {
 
         System.out.println((perfil1.getPublications()).get(0).toString());
         System.out.println((perfil1.getPublications()).get(1).toString());
+        */
 
     }
 }

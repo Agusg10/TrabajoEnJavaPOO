@@ -53,7 +53,12 @@ public class Publication {
 
     public String toString(){
         //getHashtags(hashtags);
-        return "User: "+user+" Upload Date: "+uploadDate+" Likes: "+likes+" Description: "+description+" Hashtags: "+getHashtags()+" Comments: "+getComments();
+        return "User: "+user+
+                " Upload Date: "+uploadDate+
+                " Likes: "+likes+
+                " Description: "+description+
+                " Hashtags: "+getHashtags()+
+                " Comments: "+getComments();
     }
 }
 

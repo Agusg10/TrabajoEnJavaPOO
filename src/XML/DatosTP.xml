@@ -1,64 +1,62 @@
-<Instagram>
-    <Profile>
-        <User>aguslopez</User>
-        <Name>Agustin</Name>
-        <Surname>Lopez</Surname>
-        <Publications>
-            <Publication>
-                <Type>Video</Type>
-                <Duration>45</Duration>
-                <Res>
-                    <X>1920</X>
-                    <Y>1080</Y>
-                </Res>
-                <FrameAmount>1350</FrameAmount>
-                <Description>Visiting the Beach</Description>
-                <UploadDate>18/4/2023</UploadDate>
-                <Likes>53</Likes>
-                <Hashtags>
-                    <Hashtag>Beach</Hashtag>
-                    <Hashtag>Sun</Hashtag>
-                    <Hashtag>Friends</Hashtag>
-                </Hashtags>
-                <Comments>
-                    <Comment>Great pic!</Comment>
-                    <Comment>Awesome!</Comment>
-                </Comments>
-            </Publication>
-            <Publication>
-                <Type>Image</Type>
-                <Res>
-                    <X>1080</X>
-                    <Y>1080</Y>
-                </Res>
-                <lenght>200</lenght>
-                <height>300</height>
-                <Description>Football with friends</Description>
-                <UploadDate>28/7/2023</UploadDate>
-                <Likes>26</Likes>
-                <Hashtags>
-                    <Hashtag>Sport</Hashtag>
-                    <Hashtag>Sunday</Hashtag>
-                </Hashtags>
-                <Comments>
-                    <Comment>WOW!</Comment>
-                </Comments>
-            </Publication>
-            <Publication>
-                <Type>Audio</Type>
-                <Duration>15</Duration>
-                <Bits>10</Bits>
-                <Description>Happy Birthday from Messi</Description>
-                <UploadDate>12/12/2022</UploadDate>
-                <Likes>103</Likes>
-                <Hashtags>
-                    <Hashtag>Singing</Hashtag>
-                    <Hashtag>Music</Hashtag>
-                </Hashtags>
-                <Comments>
-                    <Comment>Amazing song!</Comment>
-                </Comments>
-            </Publication>
-        </Publications>
-    </Profile>
-</Instagram>
+<Profile>
+    <User>aguslopez</User>
+    <Name>Agustin</Name>
+    <Surname>Lopez</Surname>
+    <Publications>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Beach</Hashtag>
+                <Hashtag>Sun</Hashtag>
+                <Hashtag>Friends</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Great pic!</Comment>
+                <Comment>Awesome!</Comment>
+            </Comments>
+            <Type>Video</Type>
+            <Duration>45</Duration>
+            <Res>
+                <X>1920</X>
+                <Y>1080</Y>
+            </Res>
+            <FrameAmount>1350</FrameAmount>
+            <Description>Visiting the Beach</Description>
+            <UploadDate>18/4/2023</UploadDate>
+            <Likes>53</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Sport</Hashtag>
+                <Hashtag>Sunday</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>WOW!</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>1080</X>
+                <Y>1080</Y>
+            </Res>
+            <lenght>200</lenght>
+            <height>300</height>
+            <Description>Football with friends</Description>
+            <UploadDate>28/7/2023</UploadDate>
+            <Likes>26</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Singing</Hashtag>
+                <Hashtag>Music</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Amazing song!</Comment>
+            </Comments>
+            <Type>Audio</Type>
+            <Duration>15</Duration>
+            <Bits>10</Bits>
+            <Description>Happy Birthday from Messi</Description>
+            <UploadDate>12/12/2022</UploadDate>
+            <Likes>103</Likes>
+        </Publication>
+    </Publications>
+</Profile>

@@ -1,5 +1,6 @@
 package XML;
 
+import DomainClasses.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -8,124 +9,81 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ClassXML {
-    public void loadArch(){
+    public InstagramProfile loadXML() {
         try {
-            File fileXML = new File("/Users/agustinlopez/Desktop/Facultad/AYED 2/Trabajo Grupal/estadis/src/XML/DatosTP.xml");//introducir ruta del archivo XML
+            File xmlFile = new File("/home/jmurrie/Desktop/TrabajoGrupal/src/XML/DatosTP.xml"); // Replace with the actual XML file path
 
-            DocumentBuilderFactory DBF = DocumentBuilderFactory.newInstance();
-            DocumentBuilder DB = DBF.newDocumentBuilder();
-            Document document = DB.parse(fileXML);
-            document.getDocumentElement().normalize(); //obtengo la raiz del XML
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
 
-            //System.out.println("Elemento raíz: " + document.getDocumentElement().getNodeName());
-            NodeList profiles = document.getElementsByTagName("Profile");
+            Element profileElement = (Element) doc.getElementsByTagName("Profile").item(0);
+            String username = profileElement.getElementsByTagName("User").item(0).getTextContent();
+            String name = profileElement.getElementsByTagName("Name").item(0).getTextContent();
+            String surname = profileElement.getElementsByTagName("Surname").item(0).getTextContent();
+            InstagramProfile profile = new InstagramProfile(username, name, surname);
 
-            for (int i = 0; i < profiles.getLength(); i++) {
+            ArrayList<Publication> publications = new ArrayList<>();
+            NodeList publicationNodes = profileElement.getElementsByTagName("Publication");
+            for (int i = 0; i < publicationNodes.getLength(); i++) {
+                Node publicationNode = publicationNodes.item(i);
+                if (publicationNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element publicationElement = (Element) publicationNode;
 
-                Node profileNode = profiles.item(i);
-
-                if (profileNode.getNodeType() == Node.ELEMENT_NODE) {
-
-                    Element profileElement = (Element) profileNode;
-
-                    String user = profileElement.getElementsByTagName("User").item(0).getTextContent();
-                    String name = profileElement.getElementsByTagName("Name").item(0).getTextContent();
-                    String surname = profileElement.getElementsByTagName("Surname").item(0).getTextContent();
-                    System.out.println("User: " + user);
-                    System.out.println("Name: " + name);
-                    System.out.println("Surname: " + surname);
-
-                    System.out.println();
-
-                    NodeList publications = profileElement.getElementsByTagName("Publication");
-
-                    for (int j = 0; j < publications.getLength(); j++) {
-
-                        Node publicationNode = publications.item(j);
-
-                        if (publicationNode.getNodeType() == Node.ELEMENT_NODE) {//
-
-                            Element publicationElement = (Element) publicationNode;
-
-                            String type = publicationElement.getElementsByTagName("Type").item(0).getTextContent();
-                            System.out.println("Type: " + type);
-
-                            if (type.equals("Video")) {
-
-                                String duration = publicationElement.getElementsByTagName("Duration").item(0).getTextContent();
-                                String resX = publicationElement.getElementsByTagName("X").item(0).getTextContent();
-                                String resY = publicationElement.getElementsByTagName("Y").item(0).getTextContent();
-                                String frameAmount = publicationElement.getElementsByTagName("FrameAmount").item(0).getTextContent();
-
-                                System.out.println("Duration: " + duration);
-                                System.out.println("Resolution: " + resX + "x" + resY);
-                                System.out.println("Frame Amount: " + frameAmount);
-
-                            } else if (type.equals("Image")) {
-
-                                String resX = publicationElement.getElementsByTagName("X").item(0).getTextContent();
-                                String resY = publicationElement.getElementsByTagName("Y").item(0).getTextContent();
-                                String length = publicationElement.getElementsByTagName("lenght").item(0).getTextContent();
-                                String height = publicationElement.getElementsByTagName("height").item(0).getTextContent();
-
-                                System.out.println("Resolution: " + resX + "x" + resY);
-                                System.out.println("Lenght: " + length);
-                                System.out.println("Height: " + height);
-
-                            } else if (type.equals("Audio")) {
-
-                                String duration = publicationElement.getElementsByTagName("Duration").item(0).getTextContent();
-                                String bits = publicationElement.getElementsByTagName("Bits").item(0).getTextContent();
-
-                                System.out.println("Duration: " + duration);
-                                System.out.println("Bits: " + bits);
-
-                            }
-
-                            String description = publicationElement.getElementsByTagName("Description").item(0).getTextContent();
-                            String uploadDate = publicationElement.getElementsByTagName("UploadDate").item(0).getTextContent();
-                            String likes = publicationElement.getElementsByTagName("Likes").item(0).getTextContent();
-
-                            System.out.println("Description: " + description);
-                            System.out.println("UploadDate: " + uploadDate);
-                            System.out.println("Likes: " + likes);
-
-                            NodeList hashtagList = publicationElement.getElementsByTagName("Hashtags");
-
-                            System.out.println("Hashtags: ");
-
-                            for (int l = 0; l < hashtagList.getLength(); l++) {
-
-                                Node hashtagNode = hashtagList.item(i);
-                                String hashtag = hashtagNode.getTextContent();
-                                System.out.println(hashtag);
-
-                            }
-
-                            NodeList commentList = publicationElement.getElementsByTagName("Comments");
-
-                            System.out.println("Comments: ");
-
-                            for (int l = 0; l < commentList.getLength(); l++) {
-
-                                Node commentNode = commentList.item(i);
-                                String comment = commentNode.getTextContent();
-                                System.out.println(comment);
-
-                            }
-
-                            System.out.println("---------------------------");
-
-                        }
+                    NodeList hashtagNodes = publicationElement.getElementsByTagName("Hashtag");
+                    ArrayList<String> hashtags = new ArrayList<>();
+                    for (int j = 0; j < hashtagNodes.getLength(); j++) {
+                        hashtags.add(hashtagNodes.item(j).getTextContent());
                     }
+
+                    NodeList commentNodes = publicationElement.getElementsByTagName("Comment");
+                    ArrayList<String> comments = new ArrayList<>();
+                    for (int j = 0; j < commentNodes.getLength(); j++) {
+                        comments.add(commentNodes.item(j).getTextContent());
+                    }
+
+                    String type = publicationElement.getElementsByTagName("Type").item(0).getTextContent();
+                    String description = publicationElement.getElementsByTagName("Description").item(0).getTextContent();
+                    Date uploadDate = new SimpleDateFormat("dd/MM/yyyy").parse(publicationElement.getElementsByTagName("UploadDate").item(0).getTextContent());
+                    int likes = Integer.parseInt(publicationElement.getElementsByTagName("Likes").item(0).getTextContent());
+
+                    Publication publication = null;
+                    if (type.equals("Video")) {
+                        int duration = Integer.parseInt(publicationElement.getElementsByTagName("Duration").item(0).getTextContent());
+                        int[] resolution = new int[2];
+                        resolution[0] = Integer.parseInt(publicationElement.getElementsByTagName("X").item(0).getTextContent());
+                        resolution[1] = Integer.parseInt(publicationElement.getElementsByTagName("Y").item(0).getTextContent());
+                        int frameAmount = Integer.parseInt(publicationElement.getElementsByTagName("FrameAmount").item(0).getTextContent());
+                        publication = new Video(username, uploadDate, likes, description, hashtags, comments, duration, resolution, frameAmount);
+                    } else if (type.equals("Image")) {
+                        int[] resolution = new int[2];
+                        resolution[0] = Integer.parseInt(publicationElement.getElementsByTagName("X").item(0).getTextContent());
+                        resolution[1] = Integer.parseInt(publicationElement.getElementsByTagName("Y").item(0).getTextContent());
+                        int length = Integer.parseInt(publicationElement.getElementsByTagName("lenght").item(0).getTextContent()); // Typo in XML, it should be "length"
+                        int height = Integer.parseInt(publicationElement.getElementsByTagName("height").item(0).getTextContent());
+                        publication = new Image(username, uploadDate, likes, description, hashtags, comments, resolution, length, height);
+                    } else if (type.equals("Audio")) {
+                        int duration = Integer.parseInt(publicationElement.getElementsByTagName("Duration").item(0).getTextContent());
+                        int bits = Integer.parseInt(publicationElement.getElementsByTagName("Bits").item(0).getTextContent());
+                        publication = new Audio(username, uploadDate, likes, description, hashtags, comments, duration, bits);
+                    }
+                    publications.add(publication);
                 }
             }
-        }
-        catch (Exception e){
+            profile.setPublications(publications);
+            return profile;
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return new InstagramProfile(loadXML().getUser(), loadXML().getName(), loadXML().getSurname());
     }
 }
+
+
