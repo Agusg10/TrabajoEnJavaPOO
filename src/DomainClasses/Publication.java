@@ -37,6 +37,8 @@ public class Publication {
 
     public String getDescription(){ return description; }
 
+
+
     private String getHashtags(){
         if(hashtags != null)
             return hashtags.toString();
