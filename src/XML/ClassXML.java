@@ -51,7 +51,7 @@ public class ClassXML {
                     }
 
                     String type = publicationElement.getElementsByTagName("Type").item(0).getTextContent();
-                    String description = publicationElement.getElementsByTagName("Description").item(0).getTextContent();
+                    String publicationName = publicationElement.getElementsByTagName("PublicationName").item(0).getTextContent();
                     Date uploadDate = new SimpleDateFormat("dd/MM/yyyy").parse(publicationElement.getElementsByTagName("UploadDate").item(0).getTextContent());
                     int likes = Integer.parseInt(publicationElement.getElementsByTagName("Likes").item(0).getTextContent());
 
@@ -62,24 +62,24 @@ public class ClassXML {
                         resolution[0] = Integer.parseInt(publicationElement.getElementsByTagName("X").item(0).getTextContent());
                         resolution[1] = Integer.parseInt(publicationElement.getElementsByTagName("Y").item(0).getTextContent());
                         int frameAmount = Integer.parseInt(publicationElement.getElementsByTagName("FrameAmount").item(0).getTextContent());
-                        publication = new Video(username, uploadDate, likes, description, hashtags, comments, duration, resolution, frameAmount);
+                        publication = new Video(username, uploadDate, likes, publicationName, hashtags, comments, duration, resolution, frameAmount);
                     } else if (type.equals("Image")) {
                         int[] resolution = new int[2];
                         resolution[0] = Integer.parseInt(publicationElement.getElementsByTagName("X").item(0).getTextContent());
                         resolution[1] = Integer.parseInt(publicationElement.getElementsByTagName("Y").item(0).getTextContent());
                         int length = Integer.parseInt(publicationElement.getElementsByTagName("lenght").item(0).getTextContent()); // Typo in XML, it should be "length"
                         int height = Integer.parseInt(publicationElement.getElementsByTagName("height").item(0).getTextContent());
-                        publication = new Image(username, uploadDate, likes, description, hashtags, comments, resolution, length, height);
+                        publication = new Image(username, uploadDate, likes, publicationName, hashtags, comments, resolution, length, height);
                     } else if (type.equals("Audio")) {
                         int duration = Integer.parseInt(publicationElement.getElementsByTagName("Duration").item(0).getTextContent());
                         int bits = Integer.parseInt(publicationElement.getElementsByTagName("Bits").item(0).getTextContent());
-                        publication = new Audio(username, uploadDate, likes, description, hashtags, comments, duration, bits);
+                        publication = new Audio(username, uploadDate, likes, publicationName, hashtags, comments, duration, bits);
                     }else if (type.equals("Text")){
                         //double characterAmount = Double.parseDouble(publicationElement.getElementsByTagName("CharacterAmount").item(0).getTextContent());
                         int characteramount = Integer.parseInt(publicationElement.getElementsByTagName("CharacterAmount").item(0).getTextContent());
                         String font = publicationElement.getElementsByTagName("Font").item(0).getTextContent();
                         double size = Double.parseDouble(publicationElement.getElementsByTagName("Size").item(0).getTextContent());
-                        publication = new Text(username,uploadDate,likes,description,hashtags,comments,characteramount,font,size);
+                        publication = new Text(username,uploadDate,likes,publicationName,hashtags,comments,characteramount,font,size);
                     }
                     publications.add(publication);
                 }

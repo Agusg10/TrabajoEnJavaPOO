@@ -21,7 +21,7 @@
                 <Y>1080</Y>
             </Res>
             <FrameAmount>1350</FrameAmount>
-            <Description>Visiting the Beach</Description>
+            <PublicationName>Visiting the Beach</PublicationName>
             <UploadDate>18/4/2023</UploadDate>
             <Likes>53</Likes>
         </Publication>
@@ -40,7 +40,7 @@
             </Res>
             <lenght>200</lenght>
             <height>300</height>
-            <Description>Football with friends</Description>
+            <PublicationName>Football with friends</PublicationName>
             <UploadDate>28/7/2023</UploadDate>
             <Likes>26</Likes>
         </Publication>
@@ -55,7 +55,7 @@
             <Type>Audio</Type>
             <Duration>15</Duration>
             <Bits>10</Bits>
-            <Description>Happy Birthday from Messi</Description>
+            <PublicationName>Happy Birthday from Messi</PublicationName>
             <UploadDate>12/12/2022</UploadDate>
             <Likes>103</Likes>
         </Publication>
@@ -71,7 +71,7 @@
             <CharacterAmount>70</CharacterAmount>
             <Font>Arial</Font>
             <Size>12</Size>
-            <Description>A night in the forest</Description>
+            <PublicationName>A night in the forest</PublicationName>
             <UploadDate>01/03/2006</UploadDate>
             <Likes>75</Likes>
         </Publication>

@@ -7,45 +7,40 @@ public class Publication {
     private String user;
     private Date uploadDate;
     private int likes;
-    private String description; //sort by name
+    private String publicationName; //sort by name
     ArrayList<String> hashtags; //add setters
     ArrayList<String> comments; //add setters
 
+    //Constructors
     public Publication() {
     }
 
-    public Publication(String user, Date uploadDate, int likes, String description,ArrayList<String> hashtags, ArrayList<String> comments) {
+    public Publication(String user, Date uploadDate, int likes, String publicationName, ArrayList<String> hashtags, ArrayList<String> comments) {
         this.user = user;
         this.uploadDate = uploadDate;
         this.likes = likes;
-        this.description = description;
+        this.publicationName = publicationName;
         this.hashtags = hashtags;
         this.comments = comments;
     }
 
+    //Getters
     public String getUser() {
         return user;
     }
-
     public Date getUploadDate() {
         return uploadDate;
     }
-
     public int getLikes() {
         return likes;
     }
-
-    public String getDescription(){ return description; }
-
-
-
+    public String getPublicationName(){ return publicationName; }
     private String getHashtags(){
         if(hashtags != null)
             return hashtags.toString();
         else
             return "[]";
     }
-
     private String getComments(){
         if(comments != null)
             return comments.toString();
@@ -53,12 +48,13 @@ public class Publication {
             return "[]";
     }
 
+    //toString
     public String toString(){
         //getHashtags(hashtags);
         return "User: "+user+
                 " Upload Date: "+uploadDate+
                 " Likes: "+likes+
-                " Description: "+description+
+                " Publication Name: "+ publicationName +
                 " Hashtags: "+getHashtags()+
                 " Comments: "+getComments();
     }

@@ -19,5 +19,8 @@ public class Main {
         } else {
             System.out.println(prof.getPublications().toString());
         }
+        prof.createAlbum("Album1");
+        prof.createAlbum("Album2");
+        System.out.println(prof.getAlbums());
     }
 }

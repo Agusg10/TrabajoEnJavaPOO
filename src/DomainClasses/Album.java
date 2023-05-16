@@ -6,21 +6,22 @@ public class Album {
     private ArrayList<Publication> publications; //add setters
     private ArrayList<Album> subAlbums; //add setters
 
-    public Album() {
-    }
-
+    //Constructors
     public Album(String albumName) {
         this.albumName = albumName;
         this.publications = null;
         this.subAlbums = null;
     }
 
-    @Override
+    //toString
     public String toString() {
-        return "Album{" +
-                "albumName='" + albumName + '\'' +
-                ", publications=" + publications +
-                ", subAlbums=" + subAlbums +
-                '}';
+        String aux = "";
+        if(this.albumName!=null)
+            aux = aux + albumName;
+        if(this.publications!=null)
+            aux = aux + publications;
+        if(this.subAlbums!=null)
+            aux = aux + subAlbums;
+        return aux;
     }
 }

@@ -9,26 +9,26 @@ public class Image extends Publication{
     private int length;
     private int height;
 
-    public Image(String user, Date uploadDate, int likes,String description, ArrayList<String> hashtags, ArrayList<String> comments, int[] resolution, int length, int height) {
-        super(user, uploadDate, likes,description,hashtags,comments);
+    //Constructors
+    public Image(String user, Date uploadDate, int likes, String publicationName, ArrayList<String> hashtags, ArrayList<String> comments, int[] resolution, int length, int height) {
+        super(user, uploadDate, likes, publicationName,hashtags,comments);
         this.resolution = resolution;
         this.length = length;
         this.height = height;
     }
 
+    //Getters
     public int[] getResolution() {
         return resolution;
     }
-
     public int getLength() {
         return length;
     }
-
     public int getHeight() {
         return height;
     }
 
-    @Override
+    //toString
     public String toString() {
         return super.toString()+"Image{" +
                 "resolution=" + Arrays.toString(resolution) +

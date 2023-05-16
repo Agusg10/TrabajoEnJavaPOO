@@ -7,21 +7,22 @@ public class Audio extends Publication{
     private float duration;
     private float bits;
 
-    public Audio(String user, Date uploadDate, int likes,String description, ArrayList<String> hashtags, ArrayList<String> comments, float duration, float bits) {
-        super(user, uploadDate, likes,description,hashtags,comments);
+    //Constructors
+    public Audio(String user, Date uploadDate, int likes,String publicationName, ArrayList<String> hashtags, ArrayList<String> comments, float duration, float bits) {
+        super(user, uploadDate, likes,publicationName,hashtags,comments);
         this.duration = duration;
         this.bits = bits;
     }
 
+    //Getters
     public float getDuration() {
         return duration;
     }
-
     public float getBits() {
         return bits;
     }
 
-    @Override
+    //toString
     public String toString() {
         return super.toString()+"Audio{" +
                 "duration=" + duration +

@@ -9,15 +9,16 @@ public class Text extends Publication{
     private double size;
     private double zoom;
 
-
-    public Text(String user, Date uploadDate, int likes, String description, ArrayList<String> hashtags, ArrayList<String> comments, int characterAmount, String font, double size) {
-        super(user, uploadDate, likes, description, hashtags, comments);
+    //Constructors
+    public Text(String user, Date uploadDate, int likes, String publicationName, ArrayList<String> hashtags, ArrayList<String> comments, int characterAmount, String font, double size) {
+        super(user, uploadDate, likes, publicationName, hashtags, comments);
         this.characterAmount = characterAmount;
         this.font = font;
         this.size = size;
         this.zoom = 100;
     }
 
+    //toString
     public String toString() {
         return super.toString()+"Text{" +
                 "characterAmount=" + characterAmount +

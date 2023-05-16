@@ -10,13 +10,15 @@ public class Video extends Publication{
     private int frameAmount;
     private int actualFrame;
 
-    public Video(String user, Date uploadDate, int likes,String description,ArrayList<String> hashtags, ArrayList<String> comments,float duration, int[] resolution, int frameAmount) {
-        super(user, uploadDate, likes, description,hashtags,comments);
+    //Constructors
+    public Video(String user, Date uploadDate, int likes,String publicationName,ArrayList<String> hashtags, ArrayList<String> comments,float duration, int[] resolution, int frameAmount) {
+        super(user, uploadDate, likes, publicationName,hashtags,comments);
         this.duration = duration;
         this.resolution = resolution;
         this.frameAmount = frameAmount;
     }
 
+    //Getters
     public float getDuration() {
         return duration;
     }
@@ -33,7 +35,7 @@ public class Video extends Publication{
         return actualFrame;
     }
 
-    @Override
+    //toString
     public String toString() {
         return super.toString()+"Video{" +
                 "duration=" + duration +
