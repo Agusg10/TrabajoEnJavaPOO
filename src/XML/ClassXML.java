@@ -74,6 +74,12 @@ public class ClassXML {
                         int duration = Integer.parseInt(publicationElement.getElementsByTagName("Duration").item(0).getTextContent());
                         int bits = Integer.parseInt(publicationElement.getElementsByTagName("Bits").item(0).getTextContent());
                         publication = new Audio(username, uploadDate, likes, description, hashtags, comments, duration, bits);
+                    }else if (type.equals("Text")){
+                        //double characterAmount = Double.parseDouble(publicationElement.getElementsByTagName("CharacterAmount").item(0).getTextContent());
+                        int characteramount = Integer.parseInt(publicationElement.getElementsByTagName("CharacterAmount").item(0).getTextContent());
+                        String font = publicationElement.getElementsByTagName("Font").item(0).getTextContent();
+                        double size = Double.parseDouble(publicationElement.getElementsByTagName("Size").item(0).getTextContent());
+                        publication = new Text(username,uploadDate,likes,description,hashtags,comments,characteramount,font,size);
                     }
                     publications.add(publication);
                 }
@@ -84,7 +90,7 @@ public class ClassXML {
             e.printStackTrace();
         }
         //return new InstagramProfile(loadXML().getUser(), loadXML().getName(), loadXML().getSurname());
-        return new InstagramProfile("null","null","null");
+        return new InstagramProfile("null","null","null","null");
     }
 }
 
