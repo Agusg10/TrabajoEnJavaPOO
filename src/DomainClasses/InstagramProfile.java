@@ -79,6 +79,53 @@ public class InstagramProfile {
         else
             this.albums.add(newAlbum);
     }
+
+    public Album searchAlbumByName(ArrayList<Album> albums, String albumName){
+        for(Album alb : albums){
+            if (alb.getAlbumName().equals(albumName)){
+                return alb;
+            }
+        }
+        return null;
+    }
+
+    public Publication searchPubliByName(ArrayList<Publication> publications, String publiName){
+        for(Publication pub : publications){
+            if (pub.getPublicationName().equals(publiName)){
+                return pub;
+            }
+        }
+        return null;
+    }
+
+    public void addPubliToAlbum(String albumName,String publiName){
+        Album albumAux = searchAlbumByName(this.albums,albumName);
+        if(albumAux != null){
+            Publication publiAux = searchPubliByName(this.publications,publiName);
+            if(publiAux != null){
+                albumAux.addPubli(publiAux);
+            }
+            else
+                System.out.println("Publication doesnt Exists");
+        }
+        else
+            System.out.println("Album doesnt Exists");
+    }
+
+    public void deletePubliFromAlbum(String albumName,String publiName){
+        Album albumAux = searchAlbumByName(this.albums,albumName);
+        if(albumAux != null){
+            Publication publiAux = searchPubliByName(this.publications,publiName);
+            if(publiAux != null){
+                albumAux.deletePubli(publiAux);
+            }
+            else
+                System.out.println("Publication doesnt Exists");
+        }
+        else
+            System.out.println("Album doesnt Exists");
+    }
+
     //toString
     public String toString() {
         return "InstagramProfile{" +
