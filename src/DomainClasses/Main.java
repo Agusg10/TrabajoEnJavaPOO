@@ -8,9 +8,16 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
+        String user, pass;
+        user = "aguslopez";
+        pass = "pass";
         ClassXML test = new ClassXML();
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
-        System.out.println(prof.getPublications().toString());
+        if (!prof.userLogin(user,pass)) {
+            System.out.println("Incorrect User or Password");
+        } else {
+            System.out.println(prof.getPublications().toString());
+        }
     }
 }

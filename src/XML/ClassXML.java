@@ -28,7 +28,8 @@ public class ClassXML {
             String username = profileElement.getElementsByTagName("User").item(0).getTextContent();
             String name = profileElement.getElementsByTagName("Name").item(0).getTextContent();
             String surname = profileElement.getElementsByTagName("Surname").item(0).getTextContent();
-            InstagramProfile profile = new InstagramProfile(username, name, surname);
+            String password = profileElement.getElementsByTagName("Password").item(0).getTextContent();
+            InstagramProfile profile = new InstagramProfile(username, name, surname,password);
 
             ArrayList<Publication> publications = new ArrayList<>();
             NodeList publicationNodes = profileElement.getElementsByTagName("Publication");

@@ -12,12 +12,18 @@ public class InstagramProfile {
     private ArrayList<Album> albums;
     // list<public> idPublicaciones = new ArrayList<publicacion>    UPCASTING (POLIMORFICO)
     private ArrayList<Publication> publications;
+    private String password;
 
 
-    public InstagramProfile(String user, String name, String surname) {
+    public InstagramProfile(String user, String name, String surname,String password) {
         this.user = user;
         this.name = name;
         this.surname = surname;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setUser(String user) {
@@ -30,13 +36,6 @@ public class InstagramProfile {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void addPublication(Publication publi){ // agregar ordenado por nombre
-        if(publications == null){
-            publications = new ArrayList<Publication>();
-        }
-        publications.add(publi);
     }
 
     public void sortPublicationsAscending(List<Publication> publi){
@@ -68,9 +67,15 @@ public class InstagramProfile {
         return "InstagramProfile{" +
                 "user='" + user + '\'' +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", surname='" + surname + '\'' +", password="+ password +
                 ", albums=" + albums +
                 ", publications=" + publications +
                 '}';
+    }
+    public boolean userLogin(String user,String password){
+        if(!this.user.equals(user)|| !this.password.equals(password))
+            return false;
+        else
+            return true;
     }
 }

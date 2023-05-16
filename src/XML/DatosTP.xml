@@ -2,6 +2,7 @@
     <User>aguslopez</User>
     <Name>Agustin</Name>
     <Surname>Lopez</Surname>
+    <Password>pass</Password>
     <Publications>
         <Publication>
             <Hashtags>
@@ -57,6 +58,22 @@
             <Description>Happy Birthday from Messi</Description>
             <UploadDate>12/12/2022</UploadDate>
             <Likes>103</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Poem</Hashtag>
+                <Hashtag>Art</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Nice poem bro.</Comment>
+            </Comments>
+            <Type>Text</Type>
+            <CharacterAmount>70</CharacterAmount>
+            <Font>Arial</Font>
+            <Size>12</Size>
+            <Description>A night in the forest</Description>
+            <UploadDate>01/03/2006</UploadDate>
+            <Likes>75</Likes>
         </Publication>
     </Publications>
 </Profile>
