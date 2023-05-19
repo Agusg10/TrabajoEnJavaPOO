@@ -98,13 +98,25 @@ public class InstagramProfile {
         return null;
     }
 
+    public void addSubalbumToAlbum(String album, String subAlbum){
+        Album albumAux = searchAlbumByName(this.albums,album);
+        if(albumAux != null){
+            Album subAlbumAux = searchAlbumByName(this.albums,subAlbum);
+            if(subAlbumAux != null)
+                albumAux.addSubAlbum(subAlbumAux);
+            else
+                System.out.println("SubAlbum doesnt Exists");
+        }
+        else
+            System.out.println("Album doesnt Exists");
+    }
+
     public void addPubliToAlbum(String albumName,String publiName){
         Album albumAux = searchAlbumByName(this.albums,albumName);
         if(albumAux != null){
             Publication publiAux = searchPubliByName(this.publications,publiName);
-            if(publiAux != null){
+            if(publiAux != null)
                 albumAux.addPubli(publiAux);
-            }
             else
                 System.out.println("Publication doesnt Exists");
         }
