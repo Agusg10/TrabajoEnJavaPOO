@@ -80,6 +80,22 @@ public class InstagramProfile {
             this.albums.add(newAlbum);
     }
 
+    public void deleteAlbum(String albumName){
+        Album albumEliminar = searchAlbumByName(this.albums,albumName);
+        if(albumEliminar == null){
+            System.out.println("Album doesnt Exists");
+        }
+        else{
+            if (albumEliminar.getSubAlbums() != null){
+                albumEliminar.getSubAlbums().clear();
+            }
+            if (albumEliminar.getPublications() != null){
+                albumEliminar.getPublications().clear();
+            }
+            this.albums.remove(albumEliminar);
+        }
+    }
+
     public Album searchAlbumByName(ArrayList<Album> albums, String albumName){
         for(Album alb : albums){
             if (alb.getAlbumName().equals(albumName)){

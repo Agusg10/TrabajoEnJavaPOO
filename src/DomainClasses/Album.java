@@ -17,6 +17,11 @@ public class Album {
     public String getAlbumName() {
         return albumName;
     }
+    public ArrayList<Album> getSubAlbums(){
+        return subAlbums;
+    }
+    public ArrayList<Publication> getPublications(){return publications;}
+
 
     //Methods
     public void addPubli(Publication publi){

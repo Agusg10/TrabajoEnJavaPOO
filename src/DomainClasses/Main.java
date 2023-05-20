@@ -24,15 +24,11 @@ public class Main {
         prof.createAlbum("Album3");
         prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
         prof.addPubliToAlbum("Album2","Visiting the Beach");
-        prof.addPubliToAlbum("Album2","Happy Birthday from Messi");
-        System.out.println(prof.getAlbums());
-        System.out.println(" ");
-        prof.deletePubliFromAlbum("Album2","Happy Birthday from Messi");
-        System.out.println(prof.getAlbums());
-        System.out.println(" ");
-        prof.deletePubliFromAlbum("Album1","Happy Birthday from Messi");
-        System.out.println(prof.getAlbums());
+        prof.addPubliToAlbum("Album3","Football with friends");
         prof.addSubalbumToAlbum("Album2","Album3");
+        System.out.println(prof.getAlbums());
+        prof.deleteAlbum("Album2");
+        System.out.println(" ");
         System.out.println(prof.getAlbums());
     }
 }
