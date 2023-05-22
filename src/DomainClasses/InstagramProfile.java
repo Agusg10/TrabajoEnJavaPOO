@@ -1,4 +1,5 @@
 package DomainClasses;
+
 import Comparator.PublicationNameComparator;
 
 import java.util.ArrayList;
@@ -63,11 +64,12 @@ public class InstagramProfile {
     public void sortPublicationsAscending(List<Publication> publi){
         Collections.sort(publi, new PublicationNameComparator());
     }
-    public boolean userLogin(String user,String password){
-        if(!this.user.equals(user)|| !this.password.equals(password))
+    public boolean userLogin(String user, String password){
+        if (user == null || password == null) {
             return false;
+        }
         else
-            return true;
+            return this.user.equalsIgnoreCase(user) && this.password.equals(password);
     }
     public void createAlbum(String albumName){
         Album newAlbum = new Album(albumName);
