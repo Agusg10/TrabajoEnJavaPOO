@@ -30,10 +30,11 @@ public class Image extends Publication{
 
     //toString
     public String toString() {
-        return super.toString()+"Image{" +
-                "resolution=" + Arrays.toString(resolution) +
-                ", length=" + length +
-                ", height=" + height +
-                '}';
+        return super.toString()+
+                "\n     Type= Image" +
+                "\n     resolution=" + Arrays.toString(resolution) +
+                "\n     length=" + length +
+                "\n     height=" + height +
+                "\n     ---------------------";
     }
 }

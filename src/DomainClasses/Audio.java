@@ -24,9 +24,10 @@ public class Audio extends Publication{
 
     //toString
     public String toString() {
-        return super.toString()+"Audio{" +
-                "duration=" + duration +
-                ", bits=" + bits +
-                '}';
+        return super.toString()+
+                "\n     Type= Audio" +
+                "\n     duration=" + duration +
+                "\n     bits=" + bits +
+                "\n     ---------------------";
     }
 }

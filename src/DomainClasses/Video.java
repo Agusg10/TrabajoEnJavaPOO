@@ -37,14 +37,13 @@ public class Video extends Publication{
 
     //toString
     public String toString() {
-        return super.toString()+"Video{" +
-                "duration=" + duration +
-                ", resolution=" + Arrays.toString(resolution) +
-                ", frameAmount=" + frameAmount +
-                ", actualFrame=" + actualFrame +
-                ", hashtags=" + hashtags +
-                ", comments=" + comments +
-                '}';
+        return super.toString()+
+                "\n     Type= Video" +
+                "\n     duration=" + duration +
+                "\n     resolution=" + Arrays.toString(resolution) +
+                "\n     frameAmount=" + frameAmount +
+                "\n     actualFrame=" + actualFrame +
+                "\n     ---------------------";
     }
 }
 

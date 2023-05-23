@@ -19,6 +19,14 @@ public class Album {
         return albumName;
     }
 
+    public ArrayList<Publication> getPublications() {
+        return publications;
+    }
+
+    public ArrayList<Album> getSubAlbums() {
+        return subAlbums;
+    }
+
     //Methods
     public void addPubli(Publication publi){
         if(this.publications == null){
@@ -51,9 +59,9 @@ public class Album {
         if(this.albumName!=null)
             aux = aux + albumName;
         if(this.publications!=null)
-            aux = aux +" \nPublications: "+ publications;
+            aux = aux +" \n     Publications: \n"+publications;
         if(this.subAlbums!=null)
-            aux = aux +" \nSubAlbums: " +subAlbums;
+            aux = aux +" \n\n     SubAlbums: \n" +subAlbums;
         return aux+"\n";
     }
 }

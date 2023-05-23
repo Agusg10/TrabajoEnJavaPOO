@@ -51,12 +51,12 @@ public class Publication {
     //toString
     public String toString(){
         //getHashtags(hashtags);
-        return "User: "+user+
-                " Upload Date: "+uploadDate+
-                " Likes: "+likes+
-                " Publication Name: "+ publicationName +
-                " Hashtags: "+getHashtags()+
-                " Comments: "+getComments();
+        return  "\n\n     User: "+user+
+                "\n     Upload Date: "+uploadDate+
+                "\n     Likes: "+likes+
+                "\n     Publication Name: "+ publicationName +
+                "\n     Hashtags: "+getHashtags()+
+                "\n     Comments: "+getComments();
     }
 }
 
