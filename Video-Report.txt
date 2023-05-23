@@ -1,0 +1,16 @@
+Publications Report:
+--------------------------
+
+
+     User: aguslopez
+     Upload Date: Tue Apr 18 00:00:00 ART 2023
+     Likes: 53
+     Publication Name: Visiting the Beach
+     Hashtags: [Beach, Sun, Friends]
+     Comments: [Great pic!, Awesome!]
+     Type= Video
+     duration=45.0
+     resolution=[1920, 1080]
+     frameAmount=1350
+     actualFrame=0
+     ---------------------

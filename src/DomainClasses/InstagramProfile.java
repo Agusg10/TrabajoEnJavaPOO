@@ -1,7 +1,10 @@
 package DomainClasses;
 
+import Comparator.PublicationLikesComparator;
 import Comparator.PublicationNameComparator;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -64,6 +67,11 @@ public class InstagramProfile {
     public void sortPublicationsAscending(List<Publication> publi){
         Collections.sort(publi, new PublicationNameComparator());
     }
+
+    public void sortPublicationDescending(ArrayList<Publication> publi){
+        Collections.sort(publi, new PublicationLikesComparator().reversed());
+    }
+
     public boolean userLogin(String user, String password){
         if (user == null || password == null) {
             return false;
@@ -155,6 +163,90 @@ public class InstagramProfile {
         else
             System.out.println("Album doesnt Exists");
     }
+
+    public void PubicationReport(ArrayList<Publication> publications){
+
+        ArrayList<Publication> videoPublications = new ArrayList<>();
+        ArrayList<Publication> imagePublications = new ArrayList<>();
+        ArrayList<Publication> textPublications = new ArrayList<>();
+        ArrayList<Publication> audioPublications = new ArrayList<>();
+
+        for(Publication publi : publications){
+
+            if (publi instanceof Video){
+                videoPublications.add(publi);
+            }
+            if (publi instanceof Image){
+                imagePublications.add(publi);
+            }
+            if (publi instanceof Text){
+                textPublications.add(publi);
+            }
+            if (publi instanceof Audio){
+                audioPublications.add(publi);
+            }
+        }
+
+        sortPublicationDescending(videoPublications);
+        sortPublicationDescending(imagePublications);
+        sortPublicationDescending(textPublications);
+        sortPublicationDescending(audioPublications);
+
+        System.out.println("Publication Report by Type:");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Video:");
+        showPublications(videoPublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Image:");
+        showPublications(imagePublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Audio:");
+        showPublications(audioPublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Text:");
+        showPublications(textPublications);
+        System.out.println("--------------------------------------------------------");
+
+        GenerateReportFile("Video-Report.txt",videoPublications);
+        GenerateReportFile("Image-Report.txt",imagePublications);
+        GenerateReportFile("Audio-Report.txt",audioPublications);
+        GenerateReportFile("Text-Report.txt",textPublications);
+    }
+
+    private static void showPublications(ArrayList<Publication> publi) {
+        int publicationsAmount = publi.size();
+        int likesAmount = 0;
+
+        for (Publication publication : publi) {
+            System.out.println(publication.toString());
+            likesAmount += publication.getLikes();
+        }
+
+        double averageLikes = publicationsAmount > 0 ? likesAmount / publicationsAmount : 0;
+
+        System.out.println("Publications Amount: " + publicationsAmount);
+        System.out.println("Average Likes: " + averageLikes);
+    }
+
+
+    private static void GenerateReportFile(String fileName, ArrayList<Publication> publications) {
+        try {
+            FileWriter writer = new FileWriter(fileName);
+            writer.write("Publications Report:\n");
+            writer.write("--------------------------\n");
+
+            for (Publication publication : publications) {
+                writer.write(publication.toString());
+            }
+
+            writer.close();
+            System.out.println("Report File has been generated: " + fileName);
+        } catch (Exception e) {
+            System.out.println("Error generating Report File: " + e.getMessage());
+        }
+    }
+
+
 
     //toString
     public String toString() {

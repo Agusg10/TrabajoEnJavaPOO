@@ -15,6 +15,7 @@ public class Main {
         ClassXML test = new ClassXML();
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
+        prof.PubicationReport(prof.getPublications());
 
         /*prof.createAlbum("Album1");
         prof.createAlbum("Album2");
@@ -32,6 +33,8 @@ public class Main {
         prof.addSubalbumToAlbum("Album2","Album3");
         System.out.println(prof.getAlbums());*/
 
+
+        /*
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -46,5 +49,7 @@ public class Main {
                 System.exit(0);
             }
         });
+
+         */
     }
 }
