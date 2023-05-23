@@ -15,12 +15,12 @@ public class Main {
         ClassXML test = new ClassXML();
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
-        prof.PubicationReport(prof.getPublications());
+        //prof.PubicationReport(prof.getPublications());
 
-        /*prof.createAlbum("Album1");
+        prof.createAlbum("Album1");
         prof.createAlbum("Album2");
         prof.createAlbum("Album3");
-        prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
+        /*prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
         prof.addPubliToAlbum("Album2","Visiting the Beach");
         prof.addPubliToAlbum("Album2","Happy Birthday from Messi");
         System.out.println(prof.getAlbums());
@@ -34,7 +34,7 @@ public class Main {
         System.out.println(prof.getAlbums());*/
 
 
-        /*
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -49,7 +49,5 @@ public class Main {
                 System.exit(0);
             }
         });
-
-         */
     }
 }

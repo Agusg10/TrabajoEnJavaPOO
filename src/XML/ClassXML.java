@@ -17,7 +17,7 @@ import java.util.Date;
 public class ClassXML {
     public InstagramProfile loadXML() {
         try {
-            File xmlFile = new File("C:\\Users\\juan_\\OneDrive\\Escritorio\\TrabajoClonado\\src\\XML\\DatosTP.xml");
+            File xmlFile = new File("C:/Users/manue/Desktop/DatosTP.xml");
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
