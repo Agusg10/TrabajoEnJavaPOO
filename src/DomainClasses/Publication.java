@@ -35,13 +35,13 @@ public class Publication {
         return likes;
     }
     public String getPublicationName(){ return publicationName; }
-    private String getHashtags(){
+    public String getHashtags(){
         if(hashtags != null)
             return hashtags.toString();
         else
             return "[]";
     }
-    private String getComments(){
+    public String getComments(){
         if(comments != null)
             return comments.toString();
         else
