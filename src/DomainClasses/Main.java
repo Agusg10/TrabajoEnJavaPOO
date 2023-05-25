@@ -53,7 +53,7 @@ public class Main {
         System.out.println(prof.getAlbums());*/
 
 
-
+        /*
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -92,7 +92,7 @@ public class Main {
             if (publicacion instanceof Audio)
                 ((Audio) publicacion).Reproducir(false,0);
         }
-
+         */
 
 
     }
