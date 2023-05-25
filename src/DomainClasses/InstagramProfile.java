@@ -219,6 +219,7 @@ public class InstagramProfile {
         Date startdate = Reports.AlbumsReport.dateRequest("Enter start date(mm/dd/yyyy): ");
         Date enddate = Reports.AlbumsReport.dateRequest("Enter end date(mm/dd/yyyy): ");
 
+
         ArrayList<Album> albumsinrange = Reports.AlbumsReport.filterAlbumsByDate(albums,startdate,enddate);
         sortAlbumsAscending(albumsinrange);
         System.out.println("\n");

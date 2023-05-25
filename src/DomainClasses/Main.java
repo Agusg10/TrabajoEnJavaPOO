@@ -13,9 +13,9 @@ public class Main {
         ClassXML test = new ClassXML();
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
-        prof.PubicationReport(prof.getPublications());
+        //prof.PubicationReport(prof.getPublications());
 
-
+        /*
         prof.createAlbum("Travels");
         prof.createAlbum("Notes");
 
@@ -31,15 +31,16 @@ public class Main {
 
         System.out.println("\n");
         prof.AlbumsReport(prof.getAlbums());
+        */
 
 
 
 
 
-        /*prof.createAlbum("Album1");
+        prof.createAlbum("Album1");
         prof.createAlbum("Album2");
         prof.createAlbum("Album3");
-        prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
+        /*prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
         prof.addPubliToAlbum("Album2","Visiting the Beach");
         prof.addPubliToAlbum("Album2","Happy Birthday from Messi");
         System.out.println(prof.getAlbums());
@@ -53,7 +54,7 @@ public class Main {
         System.out.println(prof.getAlbums());*/
 
 
-        /*
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -86,13 +87,13 @@ public class Main {
         }
 
         //Reproduccion de publicaciones de audio y video
-        for (Publication publicacion: publicacionesOriginales){
+        for (Publication publicacion: originalPublications){
             if (publicacion instanceof Video)
                 ((Video) publicacion).Reproducir(false,0);
             if (publicacion instanceof Audio)
                 ((Audio) publicacion).Reproducir(false,0);
         }
-         */
+
 
 
     }
