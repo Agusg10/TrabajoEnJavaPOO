@@ -1,0 +1,16 @@
+Reporte de Publicaciones:
+--------------------------
+
+
+     User: aguslopez
+     Upload Date: Wed Mar 01 00:00:00 ART 2006
+     Likes: 75
+     Publication Name: A night in the forest
+     Hashtags: [Poem, Art]
+     Comments: [Nice poem bro.]
+     Type= Text
+     characterAmount=70
+     font='Arial'
+     size=12.0
+     zoom=100.0
+     ---------------------

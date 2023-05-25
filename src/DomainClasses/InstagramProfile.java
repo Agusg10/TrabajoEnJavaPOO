@@ -1,9 +1,11 @@
 package DomainClasses;
+
+import Comparator.AlbumNameComparator;
+import Comparator.PublicationLikesComparator;
 import Comparator.PublicationNameComparator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
+
+import java.util.*;
 
 public class InstagramProfile {
     private String user;
@@ -36,7 +38,7 @@ public class InstagramProfile {
         this.publications = publications;
     }
     public void setAlbums(ArrayList<Album> albums) {
-        ArrayList<Album> newAlbumList = new ArrayList<>();
+        this.albums = albums;
     }
 
     //Getters
@@ -63,11 +65,20 @@ public class InstagramProfile {
     public void sortPublicationsAscending(List<Publication> publi){
         Collections.sort(publi, new PublicationNameComparator());
     }
-    public boolean userLogin(String user,String password){
-        if(!this.user.equals(user)|| !this.password.equals(password))
+
+    public void sortPublicationDescending(ArrayList<Publication> publi){
+        Collections.sort(publi, new PublicationLikesComparator().reversed());
+    }
+
+    public void sortAlbumsAscending(ArrayList<Album> albums){
+        Collections.sort(albums, new AlbumNameComparator());
+    }
+    public boolean userLogin(String user, String password){
+        if (user == null || password == null) {
             return false;
+        }
         else
-            return true;
+            return this.user.equalsIgnoreCase(user) && this.password.equals(password);
     }
     public void createAlbum(String albumName){
         Album newAlbum = new Album(albumName);
@@ -81,18 +92,18 @@ public class InstagramProfile {
     }
 
     public void deleteAlbum(String albumName){
-        Album albumEliminar = searchAlbumByName(this.albums,albumName);
-        if(albumEliminar == null){
-            System.out.println("Album doesnt Exists");
-        }
+        Album albumDelete = searchAlbumByName(this.albums,albumName);
+        if (albumDelete == null)
+            System.out.println("Album no Existe");
         else{
-            if (albumEliminar.getSubAlbums() != null){
-                albumEliminar.getSubAlbums().clear();
+            if (albumDelete.getSubAlbums() != null) {
+                albumDelete.getSubAlbums().clear();
             }
-            if (albumEliminar.getPublications() != null){
-                albumEliminar.getPublications().clear();
+
+            if (albumDelete.getPublications() != null) {
+                albumDelete.getPublications().clear();
             }
-            this.albums.remove(albumEliminar);
+            this.albums.remove(albumDelete);
         }
     }
 
@@ -121,10 +132,10 @@ public class InstagramProfile {
             if(subAlbumAux != null)
                 albumAux.addSubAlbum(subAlbumAux);
             else
-                System.out.println("SubAlbum doesnt Exists");
+                System.out.println("SubAlbum no Existe");
         }
         else
-            System.out.println("Album doesnt Exists");
+            System.out.println("Album no Existe");
     }
 
     public void addPubliToAlbum(String albumName,String publiName){
@@ -134,10 +145,10 @@ public class InstagramProfile {
             if(publiAux != null)
                 albumAux.addPubli(publiAux);
             else
-                System.out.println("Publication doesnt Exists");
+                System.out.println("Publicacion no Existe");
         }
         else
-            System.out.println("Album doesnt Exists");
+            System.out.println("Album no Existe");
     }
 
     public void deletePubliFromAlbum(String albumName,String publiName){
@@ -148,20 +159,118 @@ public class InstagramProfile {
                 albumAux.deletePubli(publiAux);
             }
             else
-                System.out.println("Publication doesnt Exists");
+                System.out.println("Publication no Existe");
         }
         else
-            System.out.println("Album doesnt Exists");
+            System.out.println("Album no Existe");
     }
+
+    public void PubicationReport(ArrayList<Publication> publications){
+
+        ArrayList<Publication> videoPublications = new ArrayList<>();
+        ArrayList<Publication> imagePublications = new ArrayList<>();
+        ArrayList<Publication> textPublications = new ArrayList<>();
+        ArrayList<Publication> audioPublications = new ArrayList<>();
+
+        for(Publication publi : publications){
+
+            if (publi instanceof Video){
+                videoPublications.add(publi);
+            }
+            if (publi instanceof Image){
+                imagePublications.add(publi);
+            }
+            if (publi instanceof Text){
+                textPublications.add(publi);
+            }
+            if (publi instanceof Audio){
+                audioPublications.add(publi);
+            }
+        }
+
+        sortPublicationDescending(videoPublications);
+        sortPublicationDescending(imagePublications);
+        sortPublicationDescending(textPublications);
+        sortPublicationDescending(audioPublications);
+
+        System.out.println("Reporte de Publicaciones por Tipo:");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Video:");
+        Reports.PublicationsReport.showPublications(videoPublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Imagen:");
+        Reports.PublicationsReport.showPublications(imagePublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Audio:");
+        Reports.PublicationsReport.showPublications(audioPublications);
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Texto:");
+        Reports.PublicationsReport.showPublications(textPublications);
+        System.out.println("--------------------------------------------------------");
+
+        Reports.PublicationsReport.GenerateReportFilePublication("Video-Report.txt",videoPublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Image-Report.txt",imagePublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Audio-Report.txt",audioPublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Text-Report.txt",textPublications);
+    }
+
+    public void AlbumsReport(ArrayList<Album> albums){
+
+        Date startdate = Reports.AlbumsReport.dateRequest("Ingresar Fecha de Inicio(dd/mm/yyyy): ");
+        Date enddate = Reports.AlbumsReport.dateRequest("Ingresar Fecha de Fin(dd/mm/yyyy): ");
+
+        if (albums != null) {
+            ArrayList<Album> albumsinrange = Reports.AlbumsReport.filterAlbumsByDate(albums, startdate, enddate);
+            sortAlbumsAscending(albumsinrange);
+            System.out.println("\n");
+            System.out.println("Reporte de Albums " + startdate + " -- " + enddate + "\n");
+            System.out.println("---------------------------------------------\n");
+            for (Album album : albumsinrange) {
+                int publicationsAmount = album.getPublications().size();
+                int commentsAmount = Reports.AlbumsReport.accountcomments(album.getPublications());
+
+                System.out.println("Nombre del Album: " + album.getAlbumName());
+                System.out.println("Cantidad de Publicaciones: " + publicationsAmount);
+                System.out.println("Cantidad de Comentarios: " + commentsAmount);
+                System.out.println("------------------------------------");
+            }
+
+            Reports.AlbumsReport.GenerateReportFileAlbum("Albums-Report.txt", albumsinrange);
+        }else{
+            System.out.println("No existen Albums");
+        }
+    }
+
+    public void showAlbums() {
+        if (albums == null || albums.isEmpty()) {
+            System.out.println("No existen álbumes disponibles.");
+        } else {
+            System.out.println("Álbumes disponibles:");
+            for (Album album : albums) {
+                System.out.println("- " + album.getAlbumName());
+            }
+        }
+    }
+
+    public void showSubAlbums(Album album, String indent) {
+        if (album.getSubAlbums() != null) {
+            for (Album subAlbum : album.getSubAlbums()) {
+                System.out.println(indent + "- " + subAlbum.getAlbumName());
+                showSubAlbums(subAlbum, indent + "  ");
+            }
+        }
+    }
+
 
     //toString
     public String toString() {
-        return "InstagramProfile{" +
+        return "InstagramProfile" +
                 "user='" + user + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +", password="+ password +
-                ", albums=" + albums +
-                ", publications=" + publications +
-                '}';
+                " name='" + name + '\'' +
+                " surname='" + surname + '\'' +
+                " password="+ password +
+                "      albums=" + albums +
+                "      publications=" + publications;
     }
+
 }

@@ -1,0 +1,15 @@
+Reporte de Publicaciones:
+--------------------------
+
+
+     User: aguslopez
+     Upload Date: Fri Jul 28 00:00:00 ART 2023
+     Likes: 26
+     Publication Name: Football with friends
+     Hashtags: [Sport, Sunday]
+     Comments: [WOW!]
+     Type= Image
+     resolution=[1080, 1080]
+     length=200
+     height=300
+     ---------------------

@@ -1,4 +1,5 @@
 package DomainClasses;
+
 import java.util.ArrayList;
 
 public class Album {
@@ -17,11 +18,21 @@ public class Album {
     public String getAlbumName() {
         return albumName;
     }
-    public ArrayList<Album> getSubAlbums(){
+
+    public ArrayList<Publication> getPublications() {
+            return publications;
+    }
+
+    public ArrayList<Album> getSubAlbums() {
         return subAlbums;
     }
-    public ArrayList<Publication> getPublications(){return publications;}
 
+    //Setters
+
+
+    public void setPublications(ArrayList<Publication> publications) {
+        this.publications = publications;
+    }
 
     //Methods
     public void addPubli(Publication publi){
@@ -55,9 +66,9 @@ public class Album {
         if(this.albumName!=null)
             aux = aux + albumName;
         if(this.publications!=null)
-            aux = aux +" \nPublications: "+ publications;
+            aux = aux +" \n     Publications: \n"+publications;
         if(this.subAlbums!=null)
-            aux = aux +" \nSubAlbums: " +subAlbums;
+            aux = aux +" \n\n     SubAlbums: \n" +subAlbums;
         return aux+"\n";
     }
 }

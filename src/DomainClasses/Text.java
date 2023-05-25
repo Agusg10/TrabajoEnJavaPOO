@@ -20,11 +20,12 @@ public class Text extends Publication{
 
     //toString
     public String toString() {
-        return super.toString()+"Text{" +
-                "characterAmount=" + characterAmount +
-                ", font='" + font + '\'' +
-                ", size=" + size +
-                ", zoom=" + zoom +
-                '}';
+        return super.toString()+
+                "\n     Type= Text" +
+                "\n     characterAmount=" + characterAmount +
+                "\n     font='" + font + '\'' +
+                "\n     size=" + size +
+                "\n     zoom=" + zoom +
+                "\n     ---------------------";
     }
 }

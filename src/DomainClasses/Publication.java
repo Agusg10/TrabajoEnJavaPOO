@@ -35,28 +35,22 @@ public class Publication {
         return likes;
     }
     public String getPublicationName(){ return publicationName; }
-    private String getHashtags(){
-        if(hashtags != null)
-            return hashtags.toString();
-        else
-            return "[]";
+    public ArrayList<String> getHashtags() {
+        return hashtags;
     }
-    private String getComments(){
-        if(comments != null)
-            return comments.toString();
-        else
-            return "[]";
+    public ArrayList<String> getComments() {
+        return comments;
     }
 
     //toString
     public String toString(){
         //getHashtags(hashtags);
-        return "User: "+user+
-                " Upload Date: "+uploadDate+
-                " Likes: "+likes+
-                " Publication Name: "+ publicationName +
-                " Hashtags: "+getHashtags()+
-                " Comments: "+getComments();
+        return  "\n\n     User: "+user+
+                "\n     Upload Date: "+uploadDate+
+                "\n     Likes: "+likes+
+                "\n     Publication Name: "+ publicationName +
+                "\n     Hashtags: "+getHashtags()+
+                "\n     Comments: "+getComments();
     }
 }
 

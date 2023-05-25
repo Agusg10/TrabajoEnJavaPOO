@@ -1,0 +1,14 @@
+Reporte de Publicaciones:
+--------------------------
+
+
+     User: aguslopez
+     Upload Date: Mon Dec 12 00:00:00 ART 2022
+     Likes: 103
+     Publication Name: Happy Birthday from Messi
+     Hashtags: [Singing, Music]
+     Comments: [Amazing song!]
+     Type= Audio
+     duration=15.0
+     bits=10.0
+     ---------------------
