@@ -12,10 +12,32 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
 
+
         ClassXML test = new ClassXML();
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
         prof.PubicationReport(prof.getPublications());
+
+
+        prof.createAlbum("Travels");
+        prof.createAlbum("Notes");
+
+        prof.addPubliToAlbum("Travels","Visiting the Beach");
+        prof.addPubliToAlbum("Travels","A night in the forest");
+        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");
+        prof.addPubliToAlbum("Notes","A night in the forest");
+        //prof.sortAlbumsAscending(prof.getAlbums());
+        //prof.addSubalbumToAlbum("Notes","Travels");
+        //System.out.println("\n");
+        //System.out.println(prof.getAlbums());
+
+
+        System.out.println("\n");
+        prof.AlbumsReport(prof.getAlbums());
+
+
+
+
 
         /*prof.createAlbum("Album1");
         prof.createAlbum("Album2");
@@ -49,7 +71,9 @@ public class Main {
                 System.exit(0);
             }
         });
-
          */
+
+
+
     }
 }

@@ -49,6 +49,9 @@ public class ProfileMenu {
                     break;
                 case 5:
                     System.out.println("Genera Reportes...");
+                    prof.PubicationReport(prof.getPublications());
+                    System.out.println("\n");
+                    prof.AlbumsReport(prof.getAlbums());
                     break;
                 case 6:
                     System.out.println("Cerrando sesión...");

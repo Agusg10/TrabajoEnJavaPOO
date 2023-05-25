@@ -27,6 +27,13 @@ public class Album {
         return subAlbums;
     }
 
+    //Setters
+
+
+    public void setPublications(ArrayList<Publication> publications) {
+        this.publications = publications;
+    }
+
     //Methods
     public void addPubli(Publication publi){
         if(this.publications == null){

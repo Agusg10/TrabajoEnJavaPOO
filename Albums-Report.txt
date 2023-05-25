@@ -1,0 +1,10 @@
+Albums Report
+-------------------
+Álbum Name: Notes
+Publications Amount: 2
+Comment Amount: 2
+------------------------------------
+Álbum Name: Travels
+Publications Amount: 1
+Comment Amount: 1
+------------------------------------

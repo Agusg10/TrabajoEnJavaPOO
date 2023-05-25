@@ -1,13 +1,11 @@
 package DomainClasses;
 
+import Comparator.AlbumNameComparator;
 import Comparator.PublicationLikesComparator;
 import Comparator.PublicationNameComparator;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
+
+import java.util.*;
 
 public class InstagramProfile {
     private String user;
@@ -40,7 +38,7 @@ public class InstagramProfile {
         this.publications = publications;
     }
     public void setAlbums(ArrayList<Album> albums) {
-        ArrayList<Album> newAlbumList = new ArrayList<>();
+        this.albums = albums;
     }
 
     //Getters
@@ -72,6 +70,9 @@ public class InstagramProfile {
         Collections.sort(publi, new PublicationLikesComparator().reversed());
     }
 
+    public void sortAlbumsAscending(ArrayList<Album> albums){
+        Collections.sort(albums, new AlbumNameComparator());
+    }
     public boolean userLogin(String user, String password){
         if (user == null || password == null) {
             return false;
@@ -195,55 +196,45 @@ public class InstagramProfile {
         System.out.println("Publication Report by Type:");
         System.out.println("--------------------------------------------------------");
         System.out.println("Video:");
-        showPublications(videoPublications);
+        Reports.PublicationsReport.showPublications(videoPublications);
         System.out.println("--------------------------------------------------------");
         System.out.println("Image:");
-        showPublications(imagePublications);
+        Reports.PublicationsReport.showPublications(imagePublications);
         System.out.println("--------------------------------------------------------");
         System.out.println("Audio:");
-        showPublications(audioPublications);
+        Reports.PublicationsReport.showPublications(audioPublications);
         System.out.println("--------------------------------------------------------");
         System.out.println("Text:");
-        showPublications(textPublications);
+        Reports.PublicationsReport.showPublications(textPublications);
         System.out.println("--------------------------------------------------------");
 
-        GenerateReportFile("Video-Report.txt",videoPublications);
-        GenerateReportFile("Image-Report.txt",imagePublications);
-        GenerateReportFile("Audio-Report.txt",audioPublications);
-        GenerateReportFile("Text-Report.txt",textPublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Video-Report.txt",videoPublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Image-Report.txt",imagePublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Audio-Report.txt",audioPublications);
+        Reports.PublicationsReport.GenerateReportFilePublication("Text-Report.txt",textPublications);
     }
 
-    private static void showPublications(ArrayList<Publication> publi) {
-        int publicationsAmount = publi.size();
-        int likesAmount = 0;
+    public void AlbumsReport(ArrayList<Album> albums){
 
-        for (Publication publication : publi) {
-            System.out.println(publication.toString());
-            likesAmount += publication.getLikes();
+        Date startdate = Reports.AlbumsReport.dateRequest("Enter start date(mm/dd/yyyy): ");
+        Date enddate = Reports.AlbumsReport.dateRequest("Enter end date(mm/dd/yyyy): ");
+
+        ArrayList<Album> albumsinrange = Reports.AlbumsReport.filterAlbumsByDate(albums,startdate,enddate);
+        sortAlbumsAscending(albumsinrange);
+        System.out.println("\n");
+        System.out.println("Albums report "+ startdate +" -- "+ enddate +"\n");
+        System.out.println("---------------------------------------------\n");
+        for (Album album : albumsinrange){
+            int publicationsAmount = album.getPublications().size();
+            int commentsAmount = Reports.AlbumsReport.accountcomments(album.getPublications());
+
+            System.out.println("Álbum: " + album.getAlbumName());
+            System.out.println("Publications Amount: " + publicationsAmount);
+            System.out.println("Comments Amount: " + commentsAmount);
+            System.out.println("------------------------------------");
         }
 
-        double averageLikes = publicationsAmount > 0 ? likesAmount / publicationsAmount : 0;
-
-        System.out.println("Publications Amount: " + publicationsAmount);
-        System.out.println("Average Likes: " + averageLikes);
-    }
-
-
-    private static void GenerateReportFile(String fileName, ArrayList<Publication> publications) {
-        try {
-            FileWriter writer = new FileWriter(fileName);
-            writer.write("Publications Report:\n");
-            writer.write("--------------------------\n");
-
-            for (Publication publication : publications) {
-                writer.write(publication.toString());
-            }
-
-            writer.close();
-            System.out.println("Report File has been generated: " + fileName);
-        } catch (Exception e) {
-            System.out.println("Error generating Report File: " + e.getMessage());
-        }
+        Reports.AlbumsReport.GenerateReportFileAlbum("Albums-Report.txt",albumsinrange);
     }
 
 
