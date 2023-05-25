@@ -37,11 +37,11 @@ public class Main {
 
 
 
-/*
+
         prof.createAlbum("Album1");
         prof.createAlbum("Album2");
         prof.createAlbum("Album3");
-        prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
+        /*prof.addPubliToAlbum("Album1","Happy Birthday from Messi");
         prof.addPubliToAlbum("Album2","Visiting the Beach");
         prof.addPubliToAlbum("Album2","Happy Birthday from Messi");
         System.out.println(prof.getAlbums());
@@ -73,28 +73,27 @@ public class Main {
         /*
         //Creo una lista de string con los atributos que voy a usar para filtrar
         //También paso la lista de publicaciones original para filtrar
-        List<Publication> originalPublications = prof.getPublications();
-        List<String> attributes = List.of("Likes", "Duration", "uploadDate", "Hashtags");
-        Filters filters = new Filters(attributes, originalPublications);
+        List<Publication> publicacionesOriginales = prof.getPublications();
+        List<String> atributos = List.of("CantidadMegusta", "Duracion", "FechaSubida", "Hashtags");
+        Filters filtros = new Filters(atributos, publicacionesOriginales);
 
         // Ejemplo de filtrado por cantidad de me gusta mayor o igual a 100
-        List<Publication> filterPublications = filters.filterPublications("Likes", "100");
+        List<Publication> publicacionesFiltradas = filtros.filterPublications("CantidadMegusta", "100");
 
 
 
         // Mostrar las publicaciones filtradas
-        for (Publication publi : filterPublications) {
-            System.out.println(publi);
+        for (Publication publicacion : publicacionesFiltradas) {
+            System.out.println(publicacion);
         }
 
         //Reproduccion de publicaciones de audio y video
-        for (Publication publi: originalPublications){
-            if (publi instanceof Video)
-                ((Video) publi).Play(false,0);
-            if (publi instanceof Audio)
-                ((Audio) publi).Play(false,0);
-        }
-         */
+        for (Publication publicacion: publicacionesOriginales){
+            if (publicacion instanceof Video)
+                ((Video) publicacion).Play(false,0);
+            if (publicacion instanceof Audio)
+                ((Audio) publicacion).Play(false,0);
+        }*/
 
 
 
