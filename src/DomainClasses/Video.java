@@ -1,13 +1,13 @@
 package DomainClasses;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
 
 import static java.lang.Thread.sleep;
 
 
-public class Video extends Publication implements Durable{
+public class Video extends Publication implements Durable,Filtrable{
     private float duration;
     private int[] resolution = new int[2];
     private int frameAmount;
@@ -77,6 +77,43 @@ public class Video extends Publication implements Durable{
         }
     }
 
+    @Override
+    public void CharacterRange(Publication PublicationSize){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Ingrese un numero de caracteres para mostrar del Video");
+        int CharacterNumbers=sc.nextInt();
+        String text = PublicationSize.toString();
+        String result = text.substring(0, CharacterNumbers);
+        System.out.println(result);
+    }
+    @Override
+    public void ChangeFont(Publication PublicationVideo){
+        String ChosenFont;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la fuente en la que quiere que se muestre la/las publicacion(Arial,Calibri,Georgia,Impact,Times New Roman)");
+        ChosenFont = sc.next();
+        Font Source;
+        if (ChosenFont.equalsIgnoreCase("Arial")) {
+            Source = new Font("Arial", Font.PLAIN, 14);
+        } else if (ChosenFont.equalsIgnoreCase("Calibri")) {
+            Source = new Font("Calibri", Font.PLAIN, 18);
+        } else if (ChosenFont.equalsIgnoreCase("Georgia")) {
+            Source = new Font("Georgia", Font.PLAIN, 6);
+        } else if (ChosenFont.equalsIgnoreCase("Impact")) {
+            Source = new Font("Impact", Font.PLAIN, 20);
+        } else {
+            Source = new Font("Times New Roman", Font.BOLD, 12);
+        }
+        JTextField SourceChangedText=new JTextField(PublicationVideo.toString());
+        SourceChangedText.setFont(Source);
+        SourceChangedText.setForeground(Color.BLUE);
+        System.out.println(SourceChangedText);
+    }
+    @Override
+    public void Fontsize(Publication PublicationImage){
+        Font Source=new Font("Arial",Font.PLAIN,50);
+        System.out.println(PublicationImage.toString()+Source);
+    }
 
     //toString
     public String toString() {
