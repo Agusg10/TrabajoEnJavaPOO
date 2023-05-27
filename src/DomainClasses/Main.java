@@ -5,7 +5,6 @@ import XML.ClassXML;
 import GUI.LogIn;
 import javax.swing.*;
 
-import java.awt.*;
 import java.util.List;
 
 public class Main {
@@ -86,7 +85,7 @@ public class Main {
         // Mostrar las publicaciones filtradas
         for (Publication publi : filterPublications) {
             System.out.println(publi);
-        }2
+        }
 
         //Reproduccion de publicaciones de audio y video
         for (Publication publi: originalPublications){
@@ -97,12 +96,7 @@ public class Main {
         }
          */
 
-        //Filtro de imagen para la fuente2
-      /*  List<Publication> Publicaciones=prof.getPublications();
-        for (Publication publicacion:Publicaciones){
-            if ( publicacion instanceof Image)
-                ((Image) publicacion).ChangeFont(publicacion);
-        }
-       */
+
+
     }
 }

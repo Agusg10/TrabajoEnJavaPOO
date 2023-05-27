@@ -166,52 +166,52 @@ public class InstagramProfile {
     }
 
     public void PubicationReport(ArrayList<Publication> publications){
+        if (publications != null) {
+            ArrayList<Publication> videoPublications = new ArrayList<>();
+            ArrayList<Publication> imagePublications = new ArrayList<>();
+            ArrayList<Publication> textPublications = new ArrayList<>();
+            ArrayList<Publication> audioPublications = new ArrayList<>();
 
-        ArrayList<Publication> videoPublications = new ArrayList<>();
-        ArrayList<Publication> imagePublications = new ArrayList<>();
-        ArrayList<Publication> textPublications = new ArrayList<>();
-        ArrayList<Publication> audioPublications = new ArrayList<>();
+            for (Publication publi : publications) {
 
-        for(Publication publi : publications){
+                if (publi instanceof Video) {
+                    videoPublications.add(publi);
+                }
+                if (publi instanceof Image) {
+                    imagePublications.add(publi);
+                }
+                if (publi instanceof Text) {
+                    textPublications.add(publi);
+                }
+                if (publi instanceof Audio) {
+                    audioPublications.add(publi);
+                }
+            }
 
-            if (publi instanceof Video){
-                videoPublications.add(publi);
-            }
-            if (publi instanceof Image){
-                imagePublications.add(publi);
-            }
-            if (publi instanceof Text){
-                textPublications.add(publi);
-            }
-            if (publi instanceof Audio){
-                audioPublications.add(publi);
-            }
+            sortPublicationDescending(videoPublications);
+            sortPublicationDescending(imagePublications);
+            sortPublicationDescending(textPublications);
+            sortPublicationDescending(audioPublications);
+
+            System.out.println("Reporte de Publicaciones por Tipo:");
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Video:");
+            Reports.PublicationsReport.GenerateReportByType("Video-Report.txt", videoPublications);
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Imagen:");
+            Reports.PublicationsReport.GenerateReportByType("Image-Report.txt", imagePublications);
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Audio:");
+            Reports.PublicationsReport.GenerateReportByType("Audio-Report.txt", audioPublications);
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Texto:");
+            Reports.PublicationsReport.GenerateReportByType("Text-Report.txt", textPublications);
+            System.out.println("--------------------------------------------------------");
+
+
+        }else{
+            System.out.println("No existen Publicaciones");
         }
-
-        sortPublicationDescending(videoPublications);
-        sortPublicationDescending(imagePublications);
-        sortPublicationDescending(textPublications);
-        sortPublicationDescending(audioPublications);
-
-        System.out.println("Reporte de Publicaciones por Tipo:");
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Video:");
-        Reports.PublicationsReport.showPublications(videoPublications);
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Imagen:");
-        Reports.PublicationsReport.showPublications(imagePublications);
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Audio:");
-        Reports.PublicationsReport.showPublications(audioPublications);
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Texto:");
-        Reports.PublicationsReport.showPublications(textPublications);
-        System.out.println("--------------------------------------------------------");
-
-        Reports.PublicationsReport.GenerateReportFilePublication("Video-Report.txt",videoPublications);
-        Reports.PublicationsReport.GenerateReportFilePublication("Image-Report.txt",imagePublications);
-        Reports.PublicationsReport.GenerateReportFilePublication("Audio-Report.txt",audioPublications);
-        Reports.PublicationsReport.GenerateReportFilePublication("Text-Report.txt",textPublications);
     }
 
     public void AlbumsReport(ArrayList<Album> albums){
