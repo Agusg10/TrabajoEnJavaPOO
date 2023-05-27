@@ -35,7 +35,8 @@ public class Filters {
                 if (publication instanceof Audio)
                     return ((Audio) publication).getDuration() >= Integer.parseInt(value);
             case "uploadDate":
-                return publication.getUploadDate().equals(value);
+                String OriginalDate=publication.getUploadDate().toString();
+                return OriginalDate.equals(value);
             case "Hashtags":
                 return publication.getHashtags().contains(value);
             default:

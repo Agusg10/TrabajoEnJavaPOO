@@ -54,8 +54,6 @@ public class Main {
         prof.addSubalbumToAlbum("Album2","Album3");
         System.out.println(prof.getAlbums());*/
 
-
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrame frame = new JFrame();
@@ -64,39 +62,15 @@ public class Main {
 
                 if (dialog.isLoginSuccessful()) {
                     ProfileMenu profilemenu = new ProfileMenu(prof);
-                    profilemenu.displayMenu();
+                    try {
+                        profilemenu.displayMenu();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
 
                 System.exit(0);
             }
         });
-        /*
-        //Creo una lista de string con los atributos que voy a usar para filtrar
-        //También paso la lista de publicaciones original para filtrar
-        List<Publication> originalPublications = prof.getPublications();
-        List<String> attributes = List.of("Likes", "Duration", "uploadDate", "Hashtags");
-        Filters filters = new Filters(attributes, originalPublications);
-
-        // Ejemplo de filtrado por cantidad de me gusta mayor o igual a 100
-        List<Publication> filterPublications = filters.filterPublications("Likes", "100");
-
-
-
-        // Mostrar las publicaciones filtradas
-        for (Publication publi : filterPublications) {
-            System.out.println(publi);
-        }
-
-        //Reproduccion de publicaciones de audio y video
-        for (Publication publi: originalPublications){
-            if (publi instanceof Video)
-                ((Video) publi).Play(false,0);
-            if (publi instanceof Audio)
-                ((Audio) publi).Play(false,0);
-        }
-         */
-
-
-
     }
 }

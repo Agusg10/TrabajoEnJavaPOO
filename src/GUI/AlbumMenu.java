@@ -14,7 +14,7 @@ public class AlbumMenu {
         scanner = new Scanner(System.in);
     }
 
-    public void displayMenu(){
+    public void displayMenu() throws InterruptedException {
 
         System.out.println("#################################");
         System.out.println("|                               |");

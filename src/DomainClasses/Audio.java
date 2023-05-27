@@ -27,30 +27,31 @@ public class Audio extends Publication implements Durable{
 
 
     @Override
-    public void Foward(int second, boolean playing, int playTime) {
-        if (playing) {
-            playTime += second;
-            System.out.println("Avanzando " + second + " segundos en " + toString());
+    public void Foward(int second, boolean playing,Publication publication) {
+        int playTime=0;
+        playTime += second;
+        if (playing==true) {
+            System.out.println("Se avanzo " + second + " segundos en " + publication.toString()+" y continua su repdroduccion");
         } else {
-            System.out.println("La publicacion no está en reproduccion");
+            System.out.println("Se avanzo "+ second + "segundos en "+ publication.toString()  + " y está pausada");
         }
     }
     @Override
-    public void Stop(int playTime, boolean playing){
-        if (playing) {
+    public void Stop(int playTime, boolean playing,Publication publication){
+        if (playing==true) {
             playing = false;
             playTime = 0;
-            System.out.println("Deteniendo la reproduccion de: " + toString());
+            System.out.println("Deteniendo la reproduccion de: " + publication.toString());
         } else {
-            System.out.println("La publicación no está en reproduccion");
+            System.out.println(publication.toString() + "No está en reproduccion");
         }
     }
     @Override
-    public void Play(boolean playing, int end)throws InterruptedException{
+    public void Play(boolean playing, int end,Publication publication)throws InterruptedException{
         if (!playing) {
             playing = true;
             sleep(1000);
-            System.out.println("Reproduciendo: " + toString());
+            System.out.println("Reproduciendo: " + publication.toString());
             while (end <duration){
                 end++;
                 sleep(1000);
@@ -58,9 +59,8 @@ public class Audio extends Publication implements Durable{
             }
             System.out.println();
             sleep(1000);
-            Stop(end, playing);
         } else {
-            System.out.println("La publicacion ya está en reproduccion");
+            System.out.println(publication.toString() + "Ya está en reproduccion");
         }
     }
 
