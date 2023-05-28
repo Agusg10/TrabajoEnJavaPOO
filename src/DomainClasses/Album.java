@@ -60,6 +60,17 @@ public class Album {
         }
     }
 
+    public void showPublicationsAlbum() {
+        if (publications == null || publications.isEmpty()) {
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones disponibles:");
+            for (Publication publication : publications) {
+                System.out.println("- " + publication.getPublicationName());
+            }
+        }
+    }
+
     //toString
     public String toString() {
         String aux = "";

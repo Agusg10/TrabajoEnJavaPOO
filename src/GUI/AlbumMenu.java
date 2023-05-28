@@ -2,6 +2,7 @@ package GUI;
 
 import DomainClasses.Album;
 import DomainClasses.InstagramProfile;
+import DomainClasses.Publication;
 
 import java.util.Scanner;
 
@@ -66,7 +67,8 @@ public class AlbumMenu {
                             subAlbumName = scanner.nextLine();
                             profile.addSubalbumToAlbum(albumName,subAlbumName);
                             break;
-                        case 3: break;
+                        case 3:
+                            break;
                     }
                     break;
                 case 2:
@@ -199,7 +201,7 @@ public class AlbumMenu {
                     System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 6);
         System.exit(0);
     }
 }

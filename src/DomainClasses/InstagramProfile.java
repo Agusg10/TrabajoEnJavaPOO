@@ -352,6 +352,18 @@ public class InstagramProfile {
             System.out.println("El album "+album.getAlbumName()+" no tiene subalbums");
     }
 
+    public void showPublications() {
+        int i=0;
+        if (publications == null || publications.isEmpty()) {
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones disponibles:");
+            for (Publication publication : publications) {
+                i++;
+                System.out.println(i+"- " + publication.getPublicationName());
+            }
+        }
+    }
 
     //toString
     public String toString() {
