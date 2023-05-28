@@ -47,7 +47,9 @@ public class ProfileMenu{
                     break;
                 case 4:
                     System.out.println("Muestra Estadisticas...");
-                    prof.MakeStatistics(prof.getPublications());
+                    //prof.MakeStatistics(prof.getPublications());
+                    StatisticsMenu statisticsMenu = new StatisticsMenu(prof);
+                    statisticsMenu.displayMenu();
                     break;
                 case 5:
                     System.out.println("Genera Reportes...");

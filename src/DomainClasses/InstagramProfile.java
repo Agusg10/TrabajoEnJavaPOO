@@ -160,11 +160,32 @@ public class InstagramProfile {
             System.out.println("Album no Existe");
     }
 
-    public void MakeStatistics(ArrayList<Publication> publications){
+    public void showLikesStatistics(ArrayList<Publication> publications){
         int likesAudio = 0;
         int likesImage = 0;
         int likesText = 0;
         int likesVideo = 0;
+
+        for (Publication publication : publications){
+            if (publication instanceof Image){
+                likesImage += publication.getLikes();
+            }
+            if (publication instanceof Video){
+                likesVideo += publication.getLikes();
+            }
+            if (publication instanceof Text){
+                likesText += publication.getLikes();
+            }
+            if (publication instanceof Audio){
+                likesAudio += publication.getLikes();
+            }
+
+        }
+        Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gustas","Cantidad de Me Gusta","Estadisticas de likes por tipos");
+
+    }
+    public void showPublicationsStatistics(ArrayList<Publication> publications){
+
         int publiVideo = 0;
         int publiImage = 0;
         int publiText = 0;
@@ -172,24 +193,19 @@ public class InstagramProfile {
 
         for (Publication publication : publications){
             if (publication instanceof Image){
-                likesImage += publication.getLikes();
                 publiImage++;
             }
             if (publication instanceof Video){
-                likesVideo += publication.getLikes();
                 publiVideo++;
             }
             if (publication instanceof Text){
-                likesText += publication.getLikes();
                 publiText++;
             }
             if (publication instanceof Audio){
-                likesAudio += publication.getLikes();
                 publiAudio++;
             }
 
         }
-        Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gustas","Cantidad de Me Gusta","Estadisticas de likes por tipos");
         Statistics.PublicationsStatistics.PieChart(publiAudio,publiVideo,publiText,publiImage);
 
     }
