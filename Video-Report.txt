@@ -14,3 +14,5 @@ Reporte de Publicaciones:
      frameAmount=1350
      actualFrame=0
      ---------------------
+Cantidad de Publicaciones: 1
+Promedio de Likes: 53.0

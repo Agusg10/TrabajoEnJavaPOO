@@ -14,3 +14,5 @@ Reporte de Publicaciones:
      size=12.0
      zoom=100.0
      ---------------------
+Cantidad de Publicaciones: 1
+Promedio de Likes: 75.0

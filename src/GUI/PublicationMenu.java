@@ -22,83 +22,20 @@ public class PublicationMenu {
         int opcion;
         do {
             System.out.println("\nSeleccione una opción:");
-            System.out.println("1. Filtros Visuales y Reproduccion de videos y audios");
+            System.out.println("1. Filtros Visuales");
             System.out.println("2. Filtrar Publicaciones por atributos");
             System.out.println("3. Mostrar Publicaciones");
-            System.out.println("4. Volver");
-            System.out.println("5. Cerrar sesion");
+            System.out.println("4. Reproduccion de videos y audios");
+            System.out.println("5. Volver");
+            System.out.println("6. Cerrar sesion");
 
             System.out.print("Opción: ");
             opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Seleccione una opcion");
-                    System.out.println("1. Filtro de caracteres");
-                    System.out.println("2. Filtro de fuente");
-                    System.out.println("3. Filtro de tamaño de fuente");
-                    System.out.println("4. Reproduccion de videos y audios");
-                    int opcion2 =scanner.nextInt();
-                    List<Publication> Publications = profile.getPublications();
-                    switch (opcion2) {
-                        //Aplica filtro de caracteres(Funciona)
-                        case 1:
-                            for (Publication publicacion : Publications) {
-                                if (publicacion instanceof Image) {
-                                    ((Image) publicacion).CharacterRange(publicacion);
-                                } else if (publicacion instanceof Video) {
-                                    ((Video)publicacion).CharacterRange(publicacion);
-                                }
-                            }
-                        break;
-                        //Aplica filtro de fuente(no puede verse el cambio por consola, estaba tratando de hacerlo en una ventana)
-                        case 2:
-                            for (Publication publicacion : Publications) {
-                                if (publicacion instanceof Image) {
-                                ((Image) publicacion).ChangeFont(publicacion);
-                                } else if (publicacion instanceof Video) {
-                                    ((Video)publicacion).ChangeFont(publicacion);
-                                }
-                            }
-                            break;
-                        case 3:
-                            // Mismo caso que el 2
-                            for (Publication publicacion : Publications) {
-                                if (publicacion instanceof Image) {
-                                    ((Image) publicacion).Fontsize(publicacion);
-                                } else if (publicacion instanceof Video) {
-                                    ((Video)publicacion).Fontsize(publicacion);
-                                }
-                            }
-                        break;
-                        case 4:
-                            boolean PlayButton=false;
-                            for (Publication publication: Publications){
-                                if (publication instanceof Video){
-                                    System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
-                                    int Seconds= scanner.nextInt();
-                                    if (Seconds>0 && Seconds<((Video) publication).getDuration()){
-                                        ((Video) publication).Foward(Seconds, PlayButton, publication);
-                                        ((Video) publication).Play(PlayButton, Seconds, publication);
-                                        ((Video) publication).Stop(Seconds,PlayButton,publication);
-                                    } else if (Seconds==0) {
-                                        ((Video) publication).Play(PlayButton, Seconds, publication);
-                                        ((Video) publication).Stop(Seconds, PlayButton, publication);
-                                    }else
-                                        System.out.println("Ingresó un valor invalido para la publicacion o un valor negativo");
-                                }else if(publication instanceof Audio){
-                                    System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
-                                    int Seconds= scanner.nextInt();
-                                    if (Seconds!=0){
-                                        ((Audio) publication).Foward(Seconds, PlayButton, publication);
-                                        ((Audio) publication).Play(PlayButton, Seconds, publication);
-                                    } else
-                                        ((Audio) publication).Play(PlayButton,Seconds,publication);
-                                    ((Audio) publication).Stop(Seconds,PlayButton,publication);
-                                }
-                            }
-                        break;
-                    }
+                    FiltersMenu filtersMenu = new FiltersMenu(profile);
+                    filtersMenu.displayMenu();
                     break;
                 case 2:
                     //busca mediante filtros
@@ -139,10 +76,60 @@ public class PublicationMenu {
                     System.out.println(profile.getPublications().toString());
                     break;
                 case 4:
+                    Publication publiToSearch;
+                    String namePubliToSearch;
+                    System.out.println("Ingrese nombre de Publicacion que quiere reproducir (SOLO AUDIO/VIDEO)");
+                    scanner = new Scanner(System.in);
+                    namePubliToSearch = scanner.nextLine();
+                    publiToSearch = profile.searchPubliByName(profile.getPublications(),namePubliToSearch);
+
+                    if(publiToSearch != null) {
+
+                        boolean PlayButton = false;
+
+                        if (publiToSearch instanceof Video) {
+
+                            System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
+                            int Seconds = scanner.nextInt();
+                            if(Seconds < 0)
+                                System.out.println("Ingresó un valor invalido para la publicacion");
+                            else {
+                                if (Seconds > 0 && (Seconds < ((Video) publiToSearch).getDuration())) {
+                                    ((Video) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
+                                    ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                } else if (Seconds == 0)
+                                    ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                ((Video) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
+                            }
+
+                        } else if (publiToSearch instanceof Audio) {
+
+                            System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
+                            int Seconds = scanner.nextInt();
+                            if(Seconds < 0)
+                                System.out.println("Ingresó un valor invalido para la publicacion");
+                            else{
+                                if (Seconds > 0 && (Seconds < ((Audio) publiToSearch).getDuration())) {
+                                    ((Audio) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
+                                    ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                } else if (Seconds == 0)
+                                    ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                ((Audio) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
+                            }
+
+                        }else
+
+                            System.out.println("La publicacion no es Audio/Video");
+
+                    } else
+
+                        System.out.println("La publicacion no existe");
+                    break;
+                case 5:
                     ProfileMenu profilemenu = new ProfileMenu(profile);
                     profilemenu.displayMenu();
                     break;
-                case 5:
+                case 6:
                     System.out.println("Cerrando sesion...");
                     break;
                 default:

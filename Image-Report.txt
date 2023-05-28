@@ -13,3 +13,5 @@ Reporte de Publicaciones:
      length=200
      height=300
      ---------------------
+Cantidad de Publicaciones: 1
+Promedio de Likes: 26.0

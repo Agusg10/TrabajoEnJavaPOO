@@ -12,3 +12,5 @@ Reporte de Publicaciones:
      duration=15.0
      bits=10.0
      ---------------------
+Cantidad de Publicaciones: 1
+Promedio de Likes: 103.0

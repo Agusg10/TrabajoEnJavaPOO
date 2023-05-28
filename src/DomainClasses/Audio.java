@@ -31,9 +31,9 @@ public class Audio extends Publication implements Durable{
         int playTime=0;
         playTime += second;
         if (playing==true) {
-            System.out.println("Se avanzo " + second + " segundos en " + publication.toString()+" y continua su repdroduccion");
+            System.out.println("Avanzando " + second + " segundos en " + publication.getPublicationName()+" y continua su repdroduccion");
         } else {
-            System.out.println("Se avanzo "+ second + "segundos en "+ publication.toString()  + " y está pausada");
+            System.out.println("Avanzando "+ second + " segundos en "+ publication.getPublicationName());
         }
     }
     @Override
@@ -41,9 +41,9 @@ public class Audio extends Publication implements Durable{
         if (playing==true) {
             playing = false;
             playTime = 0;
-            System.out.println("Deteniendo la reproduccion de: " + publication.toString());
+            System.out.println("Deteniendo la reproduccion de: " + publication.getPublicationName());
         } else {
-            System.out.println(publication.toString() + "No está en reproduccion");
+            System.out.println(publication.getPublicationName() + " NO está en reproduccion");
         }
     }
     @Override
@@ -51,7 +51,7 @@ public class Audio extends Publication implements Durable{
         if (!playing) {
             playing = true;
             sleep(1000);
-            System.out.println("Reproduciendo: " + publication.toString());
+            System.out.println("Reproduciendo: " + publication.getPublicationName());
             while (end <duration){
                 end++;
                 sleep(1000);
@@ -60,7 +60,7 @@ public class Audio extends Publication implements Durable{
             System.out.println();
             sleep(1000);
         } else {
-            System.out.println(publication.toString() + "Ya está en reproduccion");
+            System.out.println(publication.getPublicationName() + "Ya está en reproduccion");
         }
     }
 

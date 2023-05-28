@@ -24,7 +24,7 @@ public class Main {
         prof.addPubliToAlbum("Notes","Happy Birthday from Messi");
 
 
-        /*//prof.sortAlbumsAscending(prof.getAlbums());
+        /*prof.sortAlbumsAscending(prof.getAlbums());
         //prof.addSubalbumToAlbum("Notes","Travels");
         //System.out.println("\n");
         //System.out.println(prof.getAlbums());

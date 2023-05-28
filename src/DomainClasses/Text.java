@@ -3,7 +3,7 @@ package DomainClasses;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Text extends Publication{
+public class Text extends Publication implements Filtrable{
     private int characterAmount;
     private String font;
     private double size;
@@ -27,5 +27,10 @@ public class Text extends Publication{
                 "\n     size=" + size +
                 "\n     zoom=" + zoom +
                 "\n     ---------------------";
+    }
+
+    @Override
+    public void Filter() {
+        System.out.println("Se aplico un filtro al Texto");
     }
 }

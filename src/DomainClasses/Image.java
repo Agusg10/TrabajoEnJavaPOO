@@ -34,58 +34,6 @@ public class Image extends Publication implements Filtrable{
         return height;
     }
 
-   @Override
-   public void CharacterRange(Publication PublicationSize){
-       Scanner sc=new Scanner(System.in);
-       System.out.println("Ingrese un numero de caracteres para mostrar de la imagen");
-       int CharacterNumbers=sc.nextInt();
-       String text = PublicationSize.toString();
-       String result = text.substring(0, CharacterNumbers);
-       System.out.println(result);
-   }
-   @Override
-   public void ChangeFont(Publication PublicationImage) throws InterruptedException {
-       String ChosenFont;
-       Scanner sc = new Scanner(System.in);
-       System.out.println("Ingrese la fuente en la que quiere que se muestre la imagen(Arial,Calibri,Georgia,Impact,Times New Roman)");
-       ChosenFont = sc.next();
-       Font Source;
-       if (ChosenFont.equalsIgnoreCase("Arial")) {
-           Source = new Font("Arial", Font.PLAIN, 14);
-       } else if (ChosenFont.equalsIgnoreCase("Calibri")) {
-           Source = new Font("Calibri", Font.PLAIN, 18);
-       } else if (ChosenFont.equalsIgnoreCase("Georgia")) {
-           Source = new Font("Georgia", Font.PLAIN, 6);
-       } else if (ChosenFont.equalsIgnoreCase("Impact")) {
-           Source = new Font("Impact", Font.PLAIN, 20);
-       } else {
-           Source = new Font("Times New Roman", Font.BOLD, 12);
-       }
-       // Crear una ventana
-       JFrame frame = new JFrame(PublicationImage.getPublicationName());
-       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       frame.setSize(400, 300);
-
-       // Crear un componente de texto con una fuente modificada
-       JLabel label = new JLabel(PublicationImage.toString());
-       label.setFont(Source);
-
-       //Cambio de color
-       label.setForeground(Color.orange);
-
-       // Agregar el componente de texto a la ventana
-       frame.getContentPane().add(label, BorderLayout.CENTER);
-
-       // Mostrar la ventana
-       frame.setVisible(true);
-       sleep(10000);
-       frame.setVisible(false);
-    }
-   @Override
-   public void Fontsize(Publication PublicationImage){
-       Font Source=new Font("Arial",Font.PLAIN,50);
-       System.out.println(PublicationImage.toString()+"\n" +Source);
-   }
 
     //toString
     public String toString() {
@@ -95,5 +43,10 @@ public class Image extends Publication implements Filtrable{
                 "\n     length=" + length +
                 "\n     height=" + height +
                 "\n     ---------------------";
+    }
+
+    @Override
+    public void Filter() {
+        System.out.println("Se aplico un filtro a la Imagen");
     }
 }
