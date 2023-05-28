@@ -1,39 +1,65 @@
 package Statistics;
 
-import java.util.Arrays;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+
+import java.text.DecimalFormat;
+
 
 public class PublicationsStatistics {
 
-    public static void likesStatistics(int audio, int likevideo, int text,int image) {
+    public static void BarChart(int audio, int video, int text, int image, String statistic, String ejeY,String title){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(video, statistic, "Videos");
+        dataset.addValue(image, statistic, "Imágenes");
+        dataset.addValue(text, statistic, "Textos");
+        dataset.addValue(audio, statistic, "Audios");
 
-        // Generate an array containing the variable values
-        int[] information = { audio, image, text, likevideo };
+        // Crear el gráfico de barras
+        JFreeChart chart = ChartFactory.createBarChart(
+                title, // Título del gráfico
+                "Tipo de publicación", // Etiqueta del eje X
+                ejeY, // Etiqueta del eje Y
+                dataset
+        );
 
-        // Find the maximum value among the variables
-        int maxInformation = Arrays.stream(information).max().orElse(0);
-
-        // Define the character to represent each bar
-        char barCharacter = '#';
-
-        // Calculate the scaling factor for the bars
-        double scalingFactor = (maxInformation > 0) ? 40.0 / maxInformation : 0;
-
-        // Generate the statistics diagram
-        for (int i = 0; i < information.length; i++) {
-            String bar = new String(new char[(int) (information[i] * scalingFactor)]).replace('\0', barCharacter);
-            //System.out.printf("%-10s %s%n", getVariableName(i), bar);
-            System.out.printf("%-13s %s (%d)%n", getVariableName(i), bar, information[i]);
-        }
+        // Mostrar el gráfico en una ventana
+        ChartFrame frame = new ChartFrame("Estadísticas de publicaciones", chart);
+        frame.pack();
+        frame.setVisible(true);
     }
 
+    public static void PieChart(int audio, int video, int text, int image){
+        // Crear el conjunto de datos para el gráfico de torta
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Videos", video);
+        dataset.setValue("Imágenes", image);
+        dataset.setValue("Textos", text);
+        dataset.setValue("Audios", audio);
 
-    private static String getVariableName(int index) {
-        return switch (index) {
-            case 0 -> "Audio";
-            case 1 -> "Imagen";
-            case 2 -> "Texto";
-            case 3 -> "Video";
-            default -> "Desconocido";
-        };
+        // Crear el gráfico de torta
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Estadísticas de publicaciones", // Título del gráfico
+                dataset,
+                true, // Mostrar leyenda
+                true, // Mostrar tooltips
+                false // No mostrar URLs
+        );
+
+        // Obtener el objeto PiePlot y configurar el generador de etiquetas
+        PiePlot plot = (PiePlot) chart.getPlot();
+        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator("{0} ({1})", new DecimalFormat("0"), new DecimalFormat("0%"));
+        plot.setLabelGenerator(labelGenerator);
+
+        // Mostrar el gráfico en una ventana
+        ChartFrame frame = new ChartFrame("Estadísticas de publicaciones", chart);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

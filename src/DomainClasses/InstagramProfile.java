@@ -189,13 +189,12 @@ public class InstagramProfile {
             }
 
         }
-
-        System.out.println("\nEstadisticas de cantidad de likes por tipo :\n");
-        Statistics.PublicationsStatistics.likesStatistics(likesAudio,likesVideo,likesText,likesImage);
-        System.out.println("\nEstadisticas de cantidad de publicaiones por tipo :\n");
-        Statistics.PublicationsStatistics.likesStatistics(publiAudio,publiVideo,publiText,publiImage);
+        Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gustas","Cantidad de Me Gusta","Estadisticas de likes por tipos");
+        Statistics.PublicationsStatistics.PieChart(publiAudio,publiVideo,publiText,publiImage);
 
     }
+
+
 
     public void PubicationReport(ArrayList<Publication> publications){
         if (publications != null) {
