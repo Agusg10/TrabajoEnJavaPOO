@@ -11,13 +11,14 @@ public class Main {
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
 
-        prof.createAlbum("Travels");
-        prof.createAlbum("Notes");
+        prof.createAlbum("Album 1");
+        prof.createAlbum("Album 2");
         prof.createAlbum("Album 3");
 
+        /*
         prof.addPubliToAlbum("Travels","Visiting the Beach");
         prof.addPubliToAlbum("Travels","A night in the forest");
-        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");
+        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");*/
 
         LoginMenu login = new LoginMenu(prof);
         login.displayMenu();

@@ -111,6 +111,14 @@ public class InstagramProfile {
         return null;
     }
 
+    public Album searchSubAlbumByName(Album fatherAlbum, String subAlbumName){
+        for(Album subAlb : fatherAlbum.getSubAlbums()){
+            if(subAlb.getAlbumName().equals(subAlbumName))
+                return subAlb;
+        }
+        return null;
+    }
+
     public Publication searchPubliByName(ArrayList<Publication> publications, String publiName){
         for(Publication pub : publications){
             if (pub.getPublicationName().equals(publiName)){
@@ -124,10 +132,15 @@ public class InstagramProfile {
         Album albumAux = searchAlbumByName(this.albums,album);
         if(albumAux != null){
             Album subAlbumAux = searchAlbumByName(this.albums,subAlbum);
-            if(subAlbumAux != null)
-                albumAux.addSubAlbum(subAlbumAux);
-            else
-                System.out.println("SubAlbum no Existe");
+            if(subAlbumAux != null){
+                albumAux.addSubAlbum(subAlbumAux); //si ya existe, lo agrega
+                System.out.println("SubAlbum Agregado con exito.");
+            }
+            else{
+                Album newSubAlbum = new Album(subAlbum);
+                albumAux.addSubAlbum(newSubAlbum);
+                System.out.println("SubAlbum Creado con exito.");
+            }
         }
         else
             System.out.println("Album no Existe");
@@ -144,6 +157,23 @@ public class InstagramProfile {
         }
         else
             System.out.println("Album no Existe");
+    }
+
+    public void addPubliToSubAlbum(String albumName, String subAlbumName, String publiName){
+        Publication publiAux = searchPubliByName(this.publications,publiName);
+        if(publiAux != null){
+            Album albumAux = searchAlbumByName(this.albums,albumName);
+            if(albumAux != null){
+                Album subAlbumAux = searchSubAlbumByName(albumAux,subAlbumName);
+                if(subAlbumAux != null) {
+                    subAlbumAux.addPubli(publiAux);
+                }
+                else
+                    System.out.println("SubAlbum no Existe");
+            }
+        }
+        else
+            System.out.println("Publicacion no Existe");
     }
 
     public void deletePubliFromAlbum(String albumName,String publiName){
