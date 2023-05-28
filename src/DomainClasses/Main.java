@@ -3,10 +3,6 @@ package DomainClasses;
 import GUI.LoginMenu;
 import GUI.ProfileMenu;
 import XML.ClassXML;
-import GUI.LogIn;
-import javax.swing.*;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -15,19 +11,18 @@ public class Main {
         InstagramProfile prof = test.loadXML();
         prof.sortPublicationsAscending(prof.getPublications());
 
-        prof.createAlbum("Travels");
+        /*prof.createAlbum("Travels");
         prof.createAlbum("Notes");
         prof.createAlbum("Album 3");
 
         prof.addPubliToAlbum("Travels","Visiting the Beach");
         prof.addPubliToAlbum("Travels","A night in the forest");
-        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");
+        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");*/
 
         LoginMenu login = new LoginMenu(prof);
         login.displayMenu();
         ProfileMenu profilemenu = new ProfileMenu(prof);
         profilemenu.displayMenu();
-        
 
     }
 }

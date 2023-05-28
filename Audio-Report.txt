@@ -12,5 +12,38 @@ Reporte de Publicaciones:
      duration=15.0
      bits=10.0
      ---------------------
-Cantidad de Publicaciones: 1
-Promedio de Likes: 103.0
+
+     User: aguslopez
+     Upload Date: Thu Sep 07 00:00:00 ART 2023
+     Likes: 94
+     Publication Name: Science Explorers
+     Hashtags: [Podcast, Education, Learning]
+     Comments: [Informative and interesting!, Can't wait for the next episode.]
+     Type= Audio
+     duration=25.0
+     bits=16.0
+     ---------------------
+
+     User: aguslopez
+     Upload Date: Wed Sep 20 00:00:00 ART 2023
+     Likes: 82
+     Publication Name: The Talk Show
+     Hashtags: [Podcast, TalkShow, Discussion]
+     Comments: [Interesting topic!, Can't wait for the next episode.]
+     Type= Audio
+     duration=30.0
+     bits=24.0
+     ---------------------
+
+     User: aguslopez
+     Upload Date: Fri Aug 25 00:00:00 ART 2023
+     Likes: 81
+     Publication Name: Symphony No. 5
+     Hashtags: [Music, Classical, Orchestra]
+     Comments: [Beautiful composition!, Perfect for relaxation.]
+     Type= Audio
+     duration=6.0
+     bits=24.0
+     ---------------------
+Cantidad de Publicaciones: 4
+Promedio de Likes: 90.0

@@ -75,5 +75,278 @@
             <UploadDate>01/03/2006</UploadDate>
             <Likes>75</Likes>
         </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Concert</Hashtag>
+                <Hashtag>Music</Hashtag>
+                <Hashtag>Live</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Best concert ever!</Comment>
+                <Comment>Rocking the stage!</Comment>
+            </Comments>
+            <Type>Video</Type>
+            <Duration>90</Duration>
+            <Res>
+                <X>1280</X>
+                <Y>720</Y>
+            </Res>
+            <FrameAmount>2700</FrameAmount>
+            <PublicationName>Rock Music Festival</PublicationName>
+            <UploadDate>05/10/2023</UploadDate>
+            <Likes>127</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Food</Hashtag>
+                <Hashtag>Delicious</Hashtag>
+                <Hashtag>Foodie</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Yummy!</Comment>
+                <Comment>I need the recipe!</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>1200</X>
+                <Y>800</Y>
+            </Res>
+            <lenght>800</lenght>
+            <height>600</height>
+            <PublicationName>Foodgasm</PublicationName>
+            <UploadDate>15/6/2023</UploadDate>
+            <Likes>95</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Podcast</Hashtag>
+                <Hashtag>TalkShow</Hashtag>
+                <Hashtag>Discussion</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Interesting topic!</Comment>
+                <Comment>Can't wait for the next episode.</Comment>
+            </Comments>
+            <Type>Audio</Type>
+            <Duration>30</Duration>
+            <Bits>24</Bits>
+            <PublicationName>The Talk Show</PublicationName>
+            <UploadDate>20/9/2023</UploadDate>
+            <Likes>82</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Inspiration</Hashtag>
+                <Hashtag>Quotes</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>So true!</Comment>
+                <Comment>Inspiring words.</Comment>
+            </Comments>
+            <Type>Text</Type>
+            <CharacterAmount>150</CharacterAmount>
+            <Font>Times New Roman</Font>
+            <Size>14</Size>
+            <PublicationName>Words of Wisdom</PublicationName>
+            <UploadDate>10/2/2023</UploadDate>
+            <Likes>120</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Nature</Hashtag>
+                <Hashtag>Landscape</Hashtag>
+                <Hashtag>Travel</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Breathtaking view!</Comment>
+                <Comment>Wish I could be there.</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>2560</X>
+                <Y>1440</Y>
+            </Res>
+            <lenght>1200</lenght>
+            <height>800</height>
+            <PublicationName>Sunset over the Mountains</PublicationName>
+            <UploadDate>10/8/2023</UploadDate>
+            <Likes>89</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Fashion</Hashtag>
+                <Hashtag>Style</Hashtag>
+                <Hashtag>Trendy</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Love the outfit!</Comment>
+                <Comment>You're a fashion icon.</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>1200</X>
+                <Y>1600</Y>
+            </Res>
+            <lenght>800</lenght>
+            <height>1200</height>
+            <PublicationName>Street Style Inspiration</PublicationName>
+            <UploadDate>28/9/2023</UploadDate>
+            <Likes>67</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Pets</Hashtag>
+                <Hashtag>Dogs</Hashtag>
+                <Hashtag>Cute</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Aww, adorable!</Comment>
+                <Comment>Can I pet them?</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>1080</X>
+                <Y>1080</Y>
+            </Res>
+            <lenght>600</lenght>
+            <height>600</height>
+            <PublicationName>Best Friends Forever</PublicationName>
+            <UploadDate>15/7/2023</UploadDate>
+            <Likes>92</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Art</Hashtag>
+                <Hashtag>Abstract</Hashtag>
+                <Hashtag>Creativity</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Unique and intriguing!</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>1920</X>
+                <Y>1080</Y>
+            </Res>
+            <lenght>800</lenght>
+            <height>450</height>
+            <PublicationName>Exploring the Unknown</PublicationName>
+            <UploadDate>02/11/2023</UploadDate>
+            <Likes>48</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>HealthyEating</Hashtag>
+                <Hashtag>Vegetarian</Hashtag>
+                <Hashtag>FoodPhotography</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Looks delicious and nutritious!</Comment>
+                <Comment>I need to try this recipe.</Comment>
+            </Comments>
+            <Type>Image</Type>
+            <Res>
+                <X>800</X>
+                <Y>1200</Y>
+            </Res>
+            <lenght>600</lenght>
+            <height>900</height>
+            <PublicationName>Colorful Veggie Bowl</PublicationName>
+            <UploadDate>20/10/2023</UploadDate>
+            <Likes>76</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Inspiration</Hashtag>
+                <Hashtag>Quotes</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Deep thoughts!</Comment>
+                <Comment>Words to live by.</Comment>
+            </Comments>
+            <Type>Text</Type>
+            <CharacterAmount>120</CharacterAmount>
+            <Font>Calibri</Font>
+            <Size>16</Size>
+            <PublicationName>Life Lessons</PublicationName>
+            <UploadDate>14/3/2023</UploadDate>
+            <Likes>112</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Podcast</Hashtag>
+                <Hashtag>Education</Hashtag>
+                <Hashtag>Learning</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Informative and interesting!</Comment>
+                <Comment>Can't wait for the next episode.</Comment>
+            </Comments>
+            <Type>Audio</Type>
+            <Duration>25</Duration>
+            <Bits>16</Bits>
+            <PublicationName>Science Explorers</PublicationName>
+            <UploadDate>07/9/2023</UploadDate>
+            <Likes>94</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Music</Hashtag>
+                <Hashtag>Classical</Hashtag>
+                <Hashtag>Orchestra</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Beautiful composition!</Comment>
+                <Comment>Perfect for relaxation.</Comment>
+            </Comments>
+            <Type>Audio</Type>
+            <Duration>6</Duration>
+            <Bits>24</Bits>
+            <PublicationName>Symphony No. 5</PublicationName>
+            <UploadDate>25/8/2023</UploadDate>
+            <Likes>81</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Travel</Hashtag>
+                <Hashtag>Adventure</Hashtag>
+                <Hashtag>Explore</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Incredible destinations!</Comment>
+                <Comment>Adding these places to my bucket list.</Comment>
+            </Comments>
+            <Type>Video</Type>
+            <Duration>120</Duration>
+            <Res>
+                <X>1920</X>
+                <Y>1080</Y>
+            </Res>
+            <FrameAmount>2880</FrameAmount>
+            <PublicationName>World Wanderlust</PublicationName>
+            <UploadDate>03/6/2023</UploadDate>
+            <Likes>103</Likes>
+        </Publication>
+        <Publication>
+            <Hashtags>
+                <Hashtag>Dance</Hashtag>
+                <Hashtag>Choreography</Hashtag>
+                <Hashtag>Performance</Hashtag>
+            </Hashtags>
+            <Comments>
+                <Comment>Amazing moves!</Comment>
+                <Comment>Talent at its best.</Comment>
+            </Comments>
+            <Type>Video</Type>
+            <Duration>60</Duration>
+            <Res>
+                <X>1280</X>
+                <Y>720</Y>
+            </Res>
+            <FrameAmount>1800</FrameAmount>
+            <PublicationName>Urban Dance Crew</PublicationName>
+            <UploadDate>12/7/2023</UploadDate>
+            <Likes>76</Likes>
+        </Publication>
     </Publications>
 </Profile>

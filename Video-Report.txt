@@ -3,6 +3,45 @@ Reporte de Publicaciones:
 
 
      User: aguslopez
+     Upload Date: Thu Oct 05 00:00:00 ART 2023
+     Likes: 127
+     Publication Name: Rock Music Festival
+     Hashtags: [Concert, Music, Live]
+     Comments: [Best concert ever!, Rocking the stage!]
+     Type= Video
+     duration=90.0
+     resolution=[1280, 720]
+     frameAmount=2700
+     actualFrame=0
+     ---------------------
+
+     User: aguslopez
+     Upload Date: Sat Jun 03 00:00:00 ART 2023
+     Likes: 103
+     Publication Name: World Wanderlust
+     Hashtags: [Travel, Adventure, Explore]
+     Comments: [Incredible destinations!, Adding these places to my bucket list.]
+     Type= Video
+     duration=120.0
+     resolution=[1920, 1080]
+     frameAmount=2880
+     actualFrame=0
+     ---------------------
+
+     User: aguslopez
+     Upload Date: Wed Jul 12 00:00:00 ART 2023
+     Likes: 76
+     Publication Name: Urban Dance Crew
+     Hashtags: [Dance, Choreography, Performance]
+     Comments: [Amazing moves!, Talent at its best.]
+     Type= Video
+     duration=60.0
+     resolution=[1280, 720]
+     frameAmount=1800
+     actualFrame=0
+     ---------------------
+
+     User: aguslopez
      Upload Date: Tue Apr 18 00:00:00 ART 2023
      Likes: 53
      Publication Name: Visiting the Beach
@@ -14,5 +53,5 @@ Reporte de Publicaciones:
      frameAmount=1350
      actualFrame=0
      ---------------------
-Cantidad de Publicaciones: 1
-Promedio de Likes: 53.0
+Cantidad de Publicaciones: 4
+Promedio de Likes: 89.75
