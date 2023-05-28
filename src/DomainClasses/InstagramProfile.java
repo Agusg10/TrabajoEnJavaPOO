@@ -181,7 +181,7 @@ public class InstagramProfile {
             }
 
         }
-        Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gustas","Cantidad de Me Gusta","Estadisticas de likes por tipos");
+        Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gusta","Cantidad de Me Gusta","Estadisticas de likes por tipos");
 
     }
     public void showPublicationsStatistics(ArrayList<Publication> publications){

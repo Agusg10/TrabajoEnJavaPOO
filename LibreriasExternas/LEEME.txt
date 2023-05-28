@@ -1,0 +1,3 @@
+Para agregar las Librerías Externas:
+
+File -> Project Structure... -> Libraries -> click en + -> Java -> Seleccionan Archivos .jar -> Apply
