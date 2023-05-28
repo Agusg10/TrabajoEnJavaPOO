@@ -348,7 +348,8 @@ public class InstagramProfile {
                 System.out.println(indent + "- " + subAlbum.getAlbumName());
                 subAlbum.showPublicationsAlbum();
             }
-        }
+        }else
+            System.out.println("El album "+album.getAlbumName()+" no tiene subalbums");
     }
 
 
