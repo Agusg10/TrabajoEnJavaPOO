@@ -136,7 +136,7 @@ public class PublicationMenu {
                     System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
                     break;
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
         System.exit(0);
     }
 }
