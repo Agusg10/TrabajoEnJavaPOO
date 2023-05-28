@@ -20,11 +20,6 @@ public class Main {
         prof.addSubalbumToAlbum("Album 1","Album 2");
         prof.addPubliToAlbum("Album 1", "Football with friends");
 
-        /*
-        prof.addPubliToAlbum("Travels","Visiting the Beach");
-        prof.addPubliToAlbum("Travels","A night in the forest");
-        prof.addPubliToAlbum("Notes","Happy Birthday from Messi");*/
-
         LoginMenu login = new LoginMenu(prof);
         login.displayMenu();
         ProfileMenu profilemenu = new ProfileMenu(prof);

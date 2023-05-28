@@ -38,10 +38,10 @@ public class AlbumMenu {
             opcion = scanner.nextInt();
             String albumName;
             String subAlbumName;
+            int opcionalbum;
 
             switch (opcion) {
                 case 1:
-                    int opcionalbum;
                     profile.showAlbumsAndSubAlbums();
                     System.out.println("\nSeleccione lo que desea agregar:");
                     System.out.println("1. Album");
@@ -63,9 +63,13 @@ public class AlbumMenu {
                             profile.showAlbumsAndSubAlbums();
                             System.out.print("Ingrese el nombre del álbum al que quiere agregar: ");
                             albumName = scanner.nextLine();
-                            System.out.print("Ingrese el nombre del SubAlbum que quiere agregar: ");
-                            subAlbumName = scanner.nextLine();
-                            profile.addSubalbumToAlbum(albumName,subAlbumName);
+                            if(profile.searchAlbumByName(profile.getAlbums(), albumName) == null){
+                                System.out.println("Album no existe");
+                            } else{
+                                System.out.print("Ingrese el nombre del SubAlbum que quiere agregar: ");
+                                subAlbumName = scanner.nextLine();
+                                profile.addSubalbumToAlbum(albumName,subAlbumName);
+                            }
                             break;
                         case 3:
                             break;
@@ -120,6 +124,7 @@ public class AlbumMenu {
                         }
                     } catch (Exception e) {
                         System.out.println("Se produjo un error al procesar la opción. Por favor, intentelo nuevamente.");
+                        scanner.nextLine(); // Limpiar el búfer del escáner
                     }
                     break;
                 case 4:
@@ -188,6 +193,7 @@ public class AlbumMenu {
                         }
                     } catch (Exception e) {
                         System.out.println("Se produjo un error al procesar la opción. Por favor, inténtelo nuevamente.");
+                        scanner.nextLine(); // Limpiar el búfer del escáner
                     }
                     break;
                 case 5:

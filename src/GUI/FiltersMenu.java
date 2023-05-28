@@ -4,7 +4,6 @@ import DomainClasses.InstagramProfile;
 import DomainClasses.Publication;
 import DomainClasses.*;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class FiltersMenu {
@@ -16,7 +15,7 @@ public class FiltersMenu {
         scanner = new Scanner(System.in);
     }
 
-    public void displayMenu() throws InterruptedException {
+    public void displayMenu() {
 
         System.out.println("#################################");
         System.out.println("|                               |");
@@ -34,7 +33,7 @@ public class FiltersMenu {
             opcion = scanner.nextInt();
             Publication publiToSearch;
             String namePubliToSearch;
-            
+
             switch(opcion){
                 case 1:
                     System.out.println("Ingrese nombre de Texto que quiere aplicar Filtro");
@@ -47,7 +46,7 @@ public class FiltersMenu {
                         }else
                             System.out.println(publiToSearch.getPublicationName()+" No es de tipo Texto");
                     }else
-                        System.out.println(publiToSearch.getPublicationName()+" No existe");
+                        System.out.println("La publicacion " + namePubliToSearch + " no existe");
                     break;
                 case 2:
                     System.out.println("Ingrese nombre de Imagen que quiere aplicar Filtro");
@@ -60,7 +59,7 @@ public class FiltersMenu {
                         }else
                             System.out.println(publiToSearch.getPublicationName()+" No es de tipo Imagen");
                     }else
-                        System.out.println(publiToSearch.getPublicationName()+" No existe");
+                        System.out.println("La publicacion " + namePubliToSearch + " no existe");
                     break;
                 case 3:
                     System.out.println("Ingrese nombre de Video que quiere aplicar Filtro");
@@ -73,7 +72,7 @@ public class FiltersMenu {
                         }else
                             System.out.println(publiToSearch.getPublicationName()+" No es de tipo Video");
                     }else
-                        System.out.println(publiToSearch.getPublicationName()+" No existe");
+                        System.out.println("La publicacion " + namePubliToSearch + " no existe");
                     break;
             }
         } while (opcion != 3);

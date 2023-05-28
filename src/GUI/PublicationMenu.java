@@ -43,7 +43,7 @@ public class PublicationMenu {
                     List<String> attributes = List.of("Likes", "Duration", "uploadDate", "Hashtags");
                     Filters filters = new Filters(attributes, originalPublications);
                     System.out.println("Ingrese por cual de estos 4 atributos quiere filtrar: Likes, Duration, uploadDate, Hashtags");
-                    String FilterName=scanner.next();
+                    String FilterName = scanner.next();
                     List<Publication> filterPublications;
                     switch (FilterName){
                         case "Likes":
@@ -58,7 +58,7 @@ public class PublicationMenu {
                         break;
                         case "uploadDate":
                             System.out.println("Ingrese una fecha y se mostraran las publicaciones correspondientes a esa fecha");
-                            String FilterDate=scanner.next();
+                            String FilterDate = scanner.next();
                             filterPublications = filters.filterPublications("uploadDate", "28/7/2023");// es el unico filtro que no funciona, creo que es por como se almacena el tipo date
                         break;
                         case "Hashtags":
@@ -66,7 +66,10 @@ public class PublicationMenu {
                             String HashtagFilter=scanner.next();
                             filterPublications = filters.filterPublications("Hashtags", HashtagFilter);
                         break;
-                        default:filterPublications=originalPublications;
+                        default:
+                            System.out.println("El valor no coincide con ninguno de los filtros");
+                            filterPublications = originalPublications;
+                        break;
                     }
                     for (Publication publication : filterPublications) {
                         System.out.println(publication);
