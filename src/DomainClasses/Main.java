@@ -15,6 +15,11 @@ public class Main {
         prof.createAlbum("Album 2");
         prof.createAlbum("Album 3");
 
+        prof.addPubliToAlbum("Album 2","Visiting the Beach");
+        prof.addSubalbumToAlbum("Album 2","SubAlbum2");
+        prof.addSubalbumToAlbum("Album 1","Album 2");
+        prof.addPubliToAlbum("Album 1", "Football with friends");
+
         /*
         prof.addPubliToAlbum("Travels","Visiting the Beach");
         prof.addPubliToAlbum("Travels","A night in the forest");

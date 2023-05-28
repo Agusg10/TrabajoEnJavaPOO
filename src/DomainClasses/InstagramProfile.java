@@ -318,7 +318,7 @@ public class InstagramProfile {
         }
     }
 
-    public void showAlbums() {
+    public void showAlbums(){
         if (albums == null || albums.isEmpty()) {
             System.out.println("No existen álbumes disponibles.");
         } else {
@@ -328,12 +328,25 @@ public class InstagramProfile {
             }
         }
     }
+    public void showAlbumsAndSubAlbums() {
+        if (albums == null || albums.isEmpty()) {
+            System.out.println("No existen álbumes disponibles.");
+        } else {
+            System.out.println("Álbumes disponibles:");
+            for (Album album : albums) {
+                System.out.println("- " + album.getAlbumName());
+                album.showPublicationsAlbum();
+                showSubAlbums(album,"-");
+                System.out.println(" ");
+            }
+        }
+    }
 
     public void showSubAlbums(Album album, String indent) {
         if (album.getSubAlbums() != null) {
             for (Album subAlbum : album.getSubAlbums()) {
                 System.out.println(indent + "- " + subAlbum.getAlbumName());
-                showSubAlbums(subAlbum, indent + "  ");
+                subAlbum.showPublicationsAlbum();
             }
         }
     }

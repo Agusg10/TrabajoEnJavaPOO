@@ -36,6 +36,10 @@ public class ProfileMenu{
                 case 1:
                     System.out.println("Mostrando perfil...");
                     System.out.println(prof.toString());
+                    System.out.println(" ");
+                    prof.showPublications();
+                    System.out.println(" ");
+                    prof.showAlbumsAndSubAlbums();
                     break;
                 case 2:
                     PublicationMenu publimenu = new PublicationMenu(prof);
