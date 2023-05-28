@@ -1,9 +1,9 @@
 package GUI;
-import DomainClasses.InstagramProfile;
+import DomainClasses.*;
 
 import java.util.Scanner;
 
-public class ProfileMenu {
+public class ProfileMenu{
     private InstagramProfile prof;
     private Scanner scanner;
 
@@ -47,6 +47,7 @@ public class ProfileMenu {
                     break;
                 case 4:
                     System.out.println("Muestra Estadisticas...");
+                    prof.MakeStatistics(prof.getPublications());
                     break;
                 case 5:
                     System.out.println("Genera Reportes...");

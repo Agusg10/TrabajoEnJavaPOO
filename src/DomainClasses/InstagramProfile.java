@@ -4,8 +4,8 @@ import Comparator.AlbumNameComparator;
 import Comparator.PublicationLikesComparator;
 import Comparator.PublicationNameComparator;
 
-
 import java.util.*;
+import java.util.List;
 
 public class InstagramProfile {
     private String user;
@@ -165,6 +165,43 @@ public class InstagramProfile {
             System.out.println("Album no Existe");
     }
 
+    public void MakeStatistics(ArrayList<Publication> publications){
+        int likesAudio = 0;
+        int likesImage = 0;
+        int likesText = 0;
+        int likesVideo = 0;
+        int publiVideo = 0;
+        int publiImage = 0;
+        int publiText = 0;
+        int publiAudio = 0;
+
+        for (Publication publication : publications){
+            if (publication instanceof Image){
+                likesImage += publication.getLikes();
+                publiImage++;
+            }
+            if (publication instanceof Video){
+                likesVideo += publication.getLikes();
+                publiVideo++;
+            }
+            if (publication instanceof Text){
+                likesText += publication.getLikes();
+                publiText++;
+            }
+            if (publication instanceof Audio){
+                likesAudio += publication.getLikes();
+                publiAudio++;
+            }
+
+        }
+
+        System.out.println("\nEstadisticas de cantidad de likes por tipo :\n");
+        Statistics.PublicationsStatistics.likesStatistics(likesAudio,likesVideo,likesText,likesImage);
+        System.out.println("\nEstadisticas de cantidad de publicaiones por tipo :\n");
+        Statistics.PublicationsStatistics.likesStatistics(publiAudio,publiVideo,publiText,publiImage);
+
+    }
+
     public void PubicationReport(ArrayList<Publication> publications){
         if (publications != null) {
             ArrayList<Publication> videoPublications = new ArrayList<>();
@@ -264,13 +301,13 @@ public class InstagramProfile {
 
     //toString
     public String toString() {
-        return "InstagramProfile" +
-                "user='" + user + '\'' +
-                " name='" + name + '\'' +
-                " surname='" + surname + '\'' +
-                " password="+ password +
-                "      albums=" + albums +
-                "      publications=" + publications;
+        return "\nInstagramProfile" +
+                "\n    user='" + user + '\'' +
+                " \n    name='" + name + '\'' +
+                " \n    surname='" + surname + '\'' +
+                " \n    password="+ password +
+                "      \n    albums=\n" + albums +
+                "      \n   publications=\n" + publications;
     }
 
 }

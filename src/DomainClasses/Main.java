@@ -5,8 +5,6 @@ import XML.ClassXML;
 import GUI.LogIn;
 import javax.swing.*;
 
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
@@ -65,6 +63,7 @@ public class Main {
                 if (dialog.isLoginSuccessful()) {
                     ProfileMenu profilemenu = new ProfileMenu(prof);
                     profilemenu.displayMenu();
+
                 }
 
                 System.exit(0);
