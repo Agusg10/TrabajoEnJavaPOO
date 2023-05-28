@@ -73,13 +73,8 @@ public class InstagramProfile {
     public void sortAlbumsAscending(ArrayList<Album> albums){
         Collections.sort(albums, new AlbumNameComparator());
     }
-    public boolean userLogin(String user, String password){
-        if (user == null || password == null) {
-            return false;
-        }
-        else
-            return this.user.equalsIgnoreCase(user) && this.password.equals(password);
-    }
+
+
     public void createAlbum(String albumName){
         Album newAlbum = new Album(albumName);
         if(this.albums == null){

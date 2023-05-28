@@ -12,7 +12,7 @@ public class ProfileMenu{
         scanner = new Scanner(System.in);
     }
 
-    public void displayMenu(){
+    public void displayMenu() throws InterruptedException {
 
         System.out.println("################################");
         System.out.println("|                              |");
@@ -24,7 +24,7 @@ public class ProfileMenu{
         do {
             System.out.println("\nSeleccione una opción:");
             System.out.println("1. Ver Perfil");
-            System.out.println("2. Abrir Menu Publicaciones"); // no es necesario
+            System.out.println("2. Abrir Menu Publicaciones");
             System.out.println("3. Abrir Menu Albumes");
             System.out.println("4. Mostrar Estadisticas");
             System.out.println("5. Generar Reportes");

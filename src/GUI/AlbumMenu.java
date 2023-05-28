@@ -14,7 +14,7 @@ public class AlbumMenu {
         scanner = new Scanner(System.in);
     }
 
-    public void displayMenu(){
+    public void displayMenu() throws InterruptedException {
 
         System.out.println("#################################");
         System.out.println("|                               |");
@@ -40,7 +40,7 @@ public class AlbumMenu {
                     System.out.println("\nSeleccione lo que desea agregar:");
                     System.out.println("1. Album");
                     System.out.println("2. Subalbum");
-
+                    System.out.println("3. Volver");
                     System.out.print("Opción: ");
                     opcionalbum = scanner.nextInt();
                     scanner.nextLine();
@@ -98,6 +98,7 @@ public class AlbumMenu {
                             } else {
                                 System.out.println("El álbum padre no existe.");
                             }
+                        case 3: break;
                     }
                     break;
                 case 2:

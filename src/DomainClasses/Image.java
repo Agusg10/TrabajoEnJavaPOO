@@ -1,10 +1,16 @@
 package DomainClasses;
 
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
-public class Image extends Publication{
+import static java.lang.Thread.sleep;
+
+public class Image extends Publication implements Filtrable{
     private int[] resolution = new int[2];
     private int length;
     private int height;
@@ -28,6 +34,7 @@ public class Image extends Publication{
         return height;
     }
 
+
     //toString
     public String toString() {
         return super.toString()+
@@ -36,5 +43,10 @@ public class Image extends Publication{
                 "\n     length=" + length +
                 "\n     height=" + height +
                 "\n     ---------------------";
+    }
+
+    @Override
+    public void Filter() {
+        System.out.println("Se aplico un filtro a la Imagen");
     }
 }

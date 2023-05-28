@@ -3,6 +3,32 @@ Reporte de Publicaciones:
 
 
      User: aguslopez
+     Upload Date: Fri Feb 10 00:00:00 ART 2023
+     Likes: 120
+     Publication Name: Words of Wisdom
+     Hashtags: [Inspiration, Quotes]
+     Comments: [So true!, Inspiring words.]
+     Type= Text
+     characterAmount=150
+     font='Times New Roman'
+     size=14.0
+     zoom=100.0
+     ---------------------
+
+     User: aguslopez
+     Upload Date: Tue Mar 14 00:00:00 ART 2023
+     Likes: 112
+     Publication Name: Life Lessons
+     Hashtags: [Inspiration, Quotes]
+     Comments: [Deep thoughts!, Words to live by.]
+     Type= Text
+     characterAmount=120
+     font='Calibri'
+     size=16.0
+     zoom=100.0
+     ---------------------
+
+     User: aguslopez
      Upload Date: Wed Mar 01 00:00:00 ART 2006
      Likes: 75
      Publication Name: A night in the forest
@@ -14,3 +40,5 @@ Reporte de Publicaciones:
      size=12.0
      zoom=100.0
      ---------------------
+Cantidad de Publicaciones: 3
+Promedio de Likes: 102.33333333333333
