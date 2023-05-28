@@ -25,7 +25,7 @@ public class PublicationsReport {
             double averageLikes = publicationsAmount > 0 ? (double) likesAmount / publicationsAmount : 0;
 
             System.out.println("Cantidad de Publicaciones: " + publicationsAmount);
-            System.out.println("Promedio de Likes : " + averageLikes);
+            System.out.printf("Promedio de Likes: %.2f%n", averageLikes);
 
             writer.write("\nCantidad de Publicaciones: " + publicationsAmount);
             writer.write("\nPromedio de Likes: " + averageLikes);
