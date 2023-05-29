@@ -15,7 +15,7 @@ import java.util.Date;
 
 
 public class ClassXML {
-    public InstagramProfile loadXML() {
+    public static InstagramProfile loadXML() {
         try {
             File xmlFile = new File("src/XML/DatosTP.xml"); // Replace with the actual XML file path
 

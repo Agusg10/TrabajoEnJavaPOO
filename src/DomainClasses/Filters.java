@@ -57,6 +57,4 @@ public class Filters {
         return filteredPublications;
     }
 
-
-
 }

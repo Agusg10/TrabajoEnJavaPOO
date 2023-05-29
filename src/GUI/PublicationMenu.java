@@ -4,6 +4,7 @@ import DomainClasses.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,16 +25,17 @@ public class PublicationMenu {
 
         int opcion;
         do {
-            System.out.println("\nSeleccione una opción:");
-            System.out.println("1. Filtros Visuales");
-            System.out.println("2. Filtrar Publicaciones por atributos");
-            System.out.println("3. Mostrar Publicaciones");
-            System.out.println("4. Reproduccion de videos y audios");
-            System.out.println("5. Volver");
-            System.out.println("6. Cerrar sesion");
+            try{
+                System.out.println("\nSeleccione una opción:");
+                System.out.println("1. Filtros Visuales");
+                System.out.println("2. Filtrar Publicaciones por atributos");
+                System.out.println("3. Mostrar Publicaciones");
+                System.out.println("4. Reproduccion de videos y audios");
+                System.out.println("5. Volver");
+                System.out.println("6. Cerrar sesion");
 
-            System.out.print("Opción: ");
-            opcion = scanner.nextInt();
+                System.out.print("Opción: ");
+                opcion = scanner.nextInt();
 
             switch (opcion) {
                 case 1:
@@ -113,60 +115,71 @@ public class PublicationMenu {
                     namePubliToSearch = scanner.nextLine();
                     publiToSearch = profile.searchPubliByName(profile.getPublications(),namePubliToSearch);
 
-                    if(publiToSearch != null) {
+                        if(publiToSearch != null) {
 
-                        boolean PlayButton = false;
+                            boolean PlayButton = false;
 
-                        if (publiToSearch instanceof Video) {
+                            if (publiToSearch instanceof Video) {
 
-                            System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
-                            int Seconds = scanner.nextInt();
-                            if(Seconds < 0)
-                                System.out.println("Ingresó un valor invalido para la publicacion");
-                            else {
-                                if (Seconds > 0 && (Seconds < ((Video) publiToSearch).getDuration())) {
-                                    ((Video) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
-                                    ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
-                                } else if (Seconds == 0)
-                                    ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
-                                ((Video) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
-                            }
+                                System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
+                                int Seconds = scanner.nextInt();
+                                if(Seconds < 0)
+                                    System.out.println("Ingresó un valor invalido para la publicacion");
+                                else {
+                                    if (Seconds > 0 && (Seconds < ((Video) publiToSearch).getDuration())) {
+                                        ((Video) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
+                                        ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                    } else if (Seconds == 0)
+                                        ((Video) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                    ((Video) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
+                                }
 
-                        } else if (publiToSearch instanceof Audio) {
+                            } else if (publiToSearch instanceof Audio) {
 
-                            System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
-                            int Seconds = scanner.nextInt();
-                            if(Seconds < 0)
-                                System.out.println("Ingresó un valor invalido para la publicacion");
-                            else{
-                                if (Seconds > 0 && (Seconds < ((Audio) publiToSearch).getDuration())) {
-                                    ((Audio) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
-                                    ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
-                                } else if (Seconds == 0)
-                                    ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
-                                ((Audio) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
-                            }
+                                System.out.println("Ingrese 0 si quiere que se reproduzca el video desde el principio o una cantidad de segundos para avanzar y reproducir desde allí");
+                                int Seconds = scanner.nextInt();
+                                if(Seconds < 0)
+                                    System.out.println("Ingresó un valor invalido para la publicacion");
+                                else{
+                                    if (Seconds > 0 && (Seconds < ((Audio) publiToSearch).getDuration())) {
+                                        ((Audio) publiToSearch).Foward(Seconds, PlayButton, publiToSearch);
+                                        ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                    } else if (Seconds == 0)
+                                        ((Audio) publiToSearch).Play(PlayButton, Seconds, publiToSearch);
+                                    ((Audio) publiToSearch).Stop(Seconds, PlayButton, publiToSearch);
+                                }
 
-                        }else
+                            }else
 
-                            System.out.println("La publicacion no es Audio/Video");
+                                System.out.println("La publicacion no es Audio/Video");
 
-                    } else
+                        } else
 
-                        System.out.println("La publicacion no existe");
-                    break;
-                case 5:
-                    ProfileMenu profilemenu = new ProfileMenu(profile);
-                    profilemenu.displayMenu();
-                    break;
-                case 6:
-                    System.out.println("Cerrando sesion...");
-                    break;
-                default:
-                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
-                    break;
+                            System.out.println("La publicacion no existe");
+                        break;
+                    case 5:
+                        ProfileMenu profilemenu = new ProfileMenu(profile);
+                        profilemenu.displayMenu();
+                        break;
+                    case 6:
+                        System.out.println("Cerrando sesion...");
+                        break;
+                    default:
+                        System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Ingrese un valor numérico válido para la opción.");
+                scanner.nextLine();
+                opcion = 0;
+            } catch (Exception e) {
+                System.out.println("Error: Ha ocurrido una excepción.");
+                scanner.nextLine();
+                opcion = 0;
             }
         } while (opcion != 6);
+
+        scanner.close();
         System.exit(0);
     }
 }
