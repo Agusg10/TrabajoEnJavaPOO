@@ -13,8 +13,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
 
+ This class provides methods for loading an Instagram profile from an XML file.
+ */
 public class ClassXML {
+    /**
+     * Loads an Instagram profile from an XML file.
+     *
+     * @return The Instagram profile loaded from the XML file.
+     */
     public static InstagramProfile loadXML() {
         try {
             File xmlFile = new File("src/XML/DatosTP.xml"); // Replace with the actual XML file path
@@ -89,7 +97,6 @@ public class ClassXML {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return new InstagramProfile(loadXML().getUser(), loadXML().getName(), loadXML().getSurname());
         return new InstagramProfile("null","null","null","null");
     }
 }

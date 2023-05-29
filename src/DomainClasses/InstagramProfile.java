@@ -392,6 +392,7 @@ public class InstagramProfile {
         int publiText = 0;
         int publiAudio = 0;
 
+        // Count the number of publications for each type
         for (Publication publication : publications){
             if (publication instanceof Image){
                 publiImage++;
@@ -407,19 +408,29 @@ public class InstagramProfile {
             }
 
         }
+
+        // Generate a pie chart based on the publication type counts
         Statistics.PublicationsStatistics.PieChart(publiAudio,publiVideo,publiText,publiImage);
 
     }
 
 
-
+        /**
+         * Generates a publication report based on the provided ArrayList of publications.
+         * The report includes separate reports for each publication type (video, image, text, audio).
+         *
+         * @param publications The ArrayList of publications to generate the report from.
+         */
     public void PubicationReport(ArrayList<Publication> publications){
         if (publications != null) {
+
+            // Initialize separate ArrayLists for each publication type
             ArrayList<Publication> videoPublications = new ArrayList<>();
             ArrayList<Publication> imagePublications = new ArrayList<>();
             ArrayList<Publication> textPublications = new ArrayList<>();
             ArrayList<Publication> audioPublications = new ArrayList<>();
 
+            // Iterate over publications and categorize them into respective ArrayLists
             for (Publication publi : publications) {
 
                 if (publi instanceof Video) {
@@ -436,11 +447,13 @@ public class InstagramProfile {
                 }
             }
 
+            // Sort publications in descending order
             sortPublicationDescending(videoPublications);
             sortPublicationDescending(imagePublications);
             sortPublicationDescending(textPublications);
             sortPublicationDescending(audioPublications);
 
+            // Print separate reports for each publication type
             System.out.println("Reporte de Publicaciones por Tipo:");
             System.out.println("--------------------------------------------------------");
             System.out.println("Video:");
@@ -462,17 +475,33 @@ public class InstagramProfile {
         }
     }
 
+
+        /**
+         * Generates an albums report based on the provided ArrayList of albums.
+         * The report includes album details such as name, publication count, and comment count within a specified date range.
+         *
+         * @param albums The ArrayList of albums to generate the report from.
+         */
     public void AlbumsReport(ArrayList<Album> albums){
 
+        // Request start and end dates for the report
         Date startdate = Reports.AlbumsReport.dateRequest("Ingresar Fecha de Inicio(dd/mm/yyyy): ");
         Date enddate = Reports.AlbumsReport.dateRequest("Ingresar Fecha de Fin(dd/mm/yyyy): ");
 
         if (albums != null) {
+
+            // Filter albums based on the specified date range
             ArrayList<Album> albumsinrange = Reports.AlbumsReport.filterAlbumsByDate(albums, startdate, enddate);
+
+            // Sort albums in ascending order
             sortAlbumsAscending(albumsinrange);
+
+            // Print report header
             System.out.println("\n");
             System.out.println("Reporte de Albums " + startdate + " -- " + enddate + "\n");
             System.out.println("---------------------------------------------\n");
+
+            // Iterate over filtered albums and display details
             for (Album album : albumsinrange) {
                 int publicationsAmount = album.getPublications().size();
                 int commentsAmount = Reports.AlbumsReport.accountcomments(album.getPublications());
@@ -483,12 +512,18 @@ public class InstagramProfile {
                 System.out.println("------------------------------------");
             }
 
+            // Generate report file
             Reports.AlbumsReport.GenerateReportFileAlbum("Albums-Report.txt", albumsinrange);
         }else{
             System.out.println("No existen Albums");
         }
     }
 
+
+        /**
+         * Displays the available albums of the Instagram profile.
+         * If there are no albums available, it prints a message indicating so.
+         */
     public void showAlbums(){
         if (albums == null || albums.isEmpty()) {
             System.out.println("No existen álbumes disponibles.");
@@ -499,6 +534,12 @@ public class InstagramProfile {
             }
         }
     }
+
+
+        /**
+         * Displays the albums and their sub-albums, along with their respective publications, of the Instagram profile.
+         * If there are no albums available, it prints a message indicating so.
+         */
     public void showAlbumsAndSubAlbums() {
         if (albums == null || albums.isEmpty()) {
             System.out.println("No existen álbumes disponibles.");
@@ -513,7 +554,15 @@ public class InstagramProfile {
         }
     }
 
-    public void showSubAlbums(Album album, String indent) {
+
+        /**
+         * Displays the sub-albums and their publications of a given album.
+         *
+         * @param album  The album to show the sub-albums for.
+         * @param indent The indentation string to format the output.
+         */
+
+        public void showSubAlbums(Album album, String indent) {
         if (album.getSubAlbums() != null) {
             for (Album subAlbum : album.getSubAlbums()) {
                 System.out.println(indent + "- " + subAlbum.getAlbumName());
@@ -523,6 +572,11 @@ public class InstagramProfile {
             System.out.println("El album "+album.getAlbumName()+" no tiene subalbums");
     }
 
+
+        /**
+         * Displays all the publications of the Instagram profile.
+         * If there are no publications available, it prints a message indicating so.
+         */
     public void showPublications() {
         int i=0;
         if (publications == null || publications.isEmpty()) {
@@ -535,6 +589,12 @@ public class InstagramProfile {
             }
         }
     }
+
+
+        /**
+         * Displays the audio publications of the Instagram profile.
+         * If there are no audio publications available, it prints a message indicating so.
+         */
     public void showPublicationsAudio(){
         if (publications == null || publications.isEmpty()){
             System.out.println("No existen publicaciones disponibles.");
@@ -547,6 +607,11 @@ public class InstagramProfile {
         }
     }
 
+
+        /**
+         * Displays the image publications of the Instagram profile.
+         * If there are no image publications available, it prints a message indicating so.
+         */
     public void showPublicationsImage(){
         if (publications == null || publications.isEmpty()){
             System.out.println("No existen publicaciones disponibles.");
@@ -558,6 +623,12 @@ public class InstagramProfile {
             }
         }
     }
+
+
+        /**
+         * Displays the text publications of the Instagram profile.
+         * If there are no text publications available, it prints a message indicating so.
+         */
     public void showPublicationsText(){
         if (publications == null || publications.isEmpty()){
             System.out.println("No existen publicaciones disponibles.");
@@ -569,6 +640,11 @@ public class InstagramProfile {
             }
         }
     }
+
+        /**
+         * Displays the video publications of the Instagram profile.
+         * If there are no video publications available, it prints a message indicating so.
+         */
     public void showPublicationsVideo(){
         if (publications == null || publications.isEmpty()){
             System.out.println("No existen publicaciones disponibles.");
@@ -582,6 +658,12 @@ public class InstagramProfile {
     }
 
     //toString
+        /**
+         * Returns a string representation of the InstagramProfile object.
+         *
+         * @return A string containing the profile information, including user, name, surname,
+         * password, albums, and publications.
+         */
     public String toString() {
         return "\nInstagramProfile" +
                 "\n    user='" + user + '\'' +
