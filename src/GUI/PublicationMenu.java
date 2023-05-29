@@ -109,6 +109,8 @@ public class PublicationMenu {
                                 System.out.println("Ingrese el hashtag:");
                                 String hashtag = scanner.next();
                                 filterPublications = Filters.filterByHashtag(profile.getPublications(), hashtag);
+                                if(filterPublications.isEmpty())
+                                    System.out.println("No existe publicaciones con ese hashtag");
                                 break;
 
                             default:
@@ -127,6 +129,8 @@ public class PublicationMenu {
                     case 4:
                         Publication publiToSearch;
                         String namePubliToSearch;
+                        profile.showPublicationsAudio();
+                        profile.showPublicationsVideo();
                         System.out.println("Ingrese nombre de Publicacion que quiere reproducir (SOLO AUDIO/VIDEO)");
                         scanner = new Scanner(System.in);
                         namePubliToSearch = scanner.nextLine();

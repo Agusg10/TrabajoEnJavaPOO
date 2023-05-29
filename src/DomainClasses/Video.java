@@ -102,7 +102,7 @@ public class Video extends Publication implements Durable,Filtrable{
             playTime = 0;
             System.out.println("Deteniendo la reproduccion de: " + publication.getPublicationName());
         } else {
-            System.out.println(publication.getPublicationName() + "No está en reproduccion");
+            System.out.println(publication.getPublicationName() + " NO está en reproduccion");
         }
     }
     /**

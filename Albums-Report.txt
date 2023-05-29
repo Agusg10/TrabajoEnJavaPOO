@@ -1,10 +1,6 @@
 Reporte de Albums
 -------------------
-Nombre del Album: Notes
+Nombre del Album: Album1
 Cantidad de Publicaciones: 1
-Cantidad de Comentarios: 1
-------------------------------------
-Nombre del Album: Travels
-Cantidad de Publicaciones: 1
-Cantidad de Comentarios: 1
+Cantidad de Comentarios: 2
 ------------------------------------
