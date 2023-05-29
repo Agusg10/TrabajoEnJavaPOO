@@ -385,6 +385,14 @@ public class InstagramProfile {
         Statistics.PublicationsStatistics.BarChart(likesAudio,likesVideo,likesText,likesImage,"Me Gusta","Cantidad de Me Gusta","Estadisticas de likes por tipos");
 
     }
+
+        /**
+         * Displays the statistics of the provided ArrayList of publications, including the count of each publication type (video, image, text, audio).
+         * Additionally, it generates a pie chart based on the publication type counts.
+         *
+         * @param publications The ArrayList of publications to display the statistics for.
+         */
+
     public void showPublicationsStatistics(ArrayList<Publication> publications){
 
         int publiVideo = 0;
@@ -411,7 +419,6 @@ public class InstagramProfile {
 
         // Generate a pie chart based on the publication type counts
         Statistics.PublicationsStatistics.PieChart(publiAudio,publiVideo,publiText,publiImage);
-
     }
 
 

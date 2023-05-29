@@ -1,15 +1,13 @@
 package DomainClasses;
 
-
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Scanner;
 
-import static java.lang.Thread.sleep;
-
+/**
+ * Represents an Image publication.
+ * Extends the Publication class and implements the Filtrable interface.
+ */
 public class Image extends Publication implements Filtrable{
     private int[] resolution = new int[2];
     private int length;

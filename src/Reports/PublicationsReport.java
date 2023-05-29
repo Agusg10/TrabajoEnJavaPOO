@@ -5,7 +5,16 @@ import DomainClasses.Publication;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+/**
+ * The {@code PublicationsReport} class provides methods for generating a report based on a list of publications.
+ */
 public class PublicationsReport {
+    /**
+     * Generates a report file with publication information, including the total number of publications and the average number of likes.
+     *
+     * @param filename     The name of the report file to be generated.
+     * @param publications The list of publications.
+     */
     public static void GenerateReportByType(String filename, ArrayList<Publication> publications) {
         try {
             FileWriter writer = new FileWriter(filename);

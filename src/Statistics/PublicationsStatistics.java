@@ -11,53 +11,74 @@ import org.jfree.data.general.DefaultPieDataset;
 
 import java.text.DecimalFormat;
 
-
+/**
+ * The PublicationsStatistics class provides methods to generate statistical charts for publications.
+ */
 public class PublicationsStatistics {
 
-    public static void BarChart(int audio, int video, int text, int image, String statistic, String ejeY,String title){
+    /**
+     * Generates a bar chart with publication statistics.
+     *
+     * @param audio     The number of audio publications.
+     * @param video     The number of video publications.
+     * @param text      The number of text publications.
+     * @param image     The number of image publications.
+     * @param statistic The statistic used for the data.
+     * @param ejeY      The label for the Y-axis of the chart.
+     * @param title     The title of the chart.
+     */
+    public static void BarChart(int audio, int video, int text, int image, String statistic, String ejeY, String title) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(video, statistic, "Videos");
         dataset.addValue(image, statistic, "Imágenes");
         dataset.addValue(text, statistic, "Textos");
         dataset.addValue(audio, statistic, "Audios");
 
-        // Crear el gráfico de barras
+        // Create the bar chart
         JFreeChart chart = ChartFactory.createBarChart(
-                title, // Título del gráfico
-                "Tipo de publicación", // Etiqueta del eje X
-                ejeY, // Etiqueta del eje Y
+                title, // Chart title
+                "Tipo de publicación", // X-axis label
+                ejeY, // Y-axis label
                 dataset
         );
 
-        // Mostrar el gráfico en una ventana
+        // Display the chart in a frame
         ChartFrame frame = new ChartFrame("Estadísticas de publicaciones", chart);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public static void PieChart(int audio, int video, int text, int image){
-        // Crear el conjunto de datos para el gráfico de torta
+    /**
+     * Generates a pie chart with publication statistics.
+     *
+     * @param audio The number of audio publications.
+     * @param video The number of video publications.
+     * @param text  The number of text publications.
+     * @param image The number of image publications.
+     */
+    public static void PieChart(int audio, int video, int text, int image) {
+        // Create the dataset for the pie chart
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Videos", video);
         dataset.setValue("Imágenes", image);
         dataset.setValue("Textos", text);
         dataset.setValue("Audios", audio);
 
-        // Crear el gráfico de torta
+        // Create the pie chart
         JFreeChart chart = ChartFactory.createPieChart(
-                "Estadísticas de publicaciones", // Título del gráfico
+                "Estadísticas de publicaciones", // Chart title
                 dataset,
-                true, // Mostrar leyenda
-                true, // Mostrar tooltips
-                false // No mostrar URLs
+                true, // Show legend
+                true, // Show tooltips
+                false // Do not show URLs
         );
 
-        // Obtener el objeto PiePlot y configurar el generador de etiquetas
+        // Get the PiePlot object and configure the label generator
         PiePlot plot = (PiePlot) chart.getPlot();
         PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator("{0} ({1})", new DecimalFormat("0"), new DecimalFormat("0%"));
         plot.setLabelGenerator(labelGenerator);
 
-        // Mostrar el gráfico en una ventana
+        // Display the chart in a frame
         ChartFrame frame = new ChartFrame("Estadísticas de publicaciones", chart);
         frame.pack();
         frame.setVisible(true);
