@@ -6,7 +6,9 @@ import Comparator.PublicationNameComparator;
 
 import java.util.*;
 import java.util.List;
-
+    /**
+     * Represents an Instagram profile.
+     */
 public class InstagramProfile {
     private String user;
     private String name;
@@ -15,7 +17,15 @@ public class InstagramProfile {
     private ArrayList<Publication> publications;
     private String password;
 
-    //Constructors
+        /**
+         * Constructs an InstagramProfile object with the specified user, name, surname, and password.
+         *
+         * @param user     the username of the profile
+         * @param name     the name of the profile owner
+         * @param surname  the surname of the profile owner
+         * @param password the password of the profile
+         */
+
     public InstagramProfile(String user, String name, String surname,String password) {
         this.user = user;
         this.name = name;
@@ -24,56 +34,150 @@ public class InstagramProfile {
         this.albums = null;
     }
 
-    //Setters
+        /**
+         * Sets the user name of the profile.
+         *
+         * @param user the user name to set
+         */
     public void setUser(String user) {
         this.user = user;
     }
+
+        /**
+         * Sets the name of the profile owner.
+         *
+         * @param name the name to set
+         */
+
     public void setName(String name) {
         this.name = name;
     }
+
+        /**
+         * Sets the surname of the profile owner.
+         *
+         * @param surname the surname to set
+         */
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+        /**
+         * Sets the list of publications for the profile.
+         *
+         * @param publications the list of publications to set
+         */
+
     public void setPublications(ArrayList<Publication> publications) {
         this.publications = publications;
     }
+
+        /**
+         * Sets the list of albums for the profile.
+         *
+         * @param albums the list of albums to set
+         */
+
     public void setAlbums(ArrayList<Album> albums) {
         this.albums = albums;
     }
 
-    //Getters
+        /**
+         * Returns the password of the profile.
+         *
+         * @return the password of the profile
+         */
+
     public String getPassword() {
         return password;
     }
+
+        /**
+         * Returns the user name of the profile.
+         *
+         * @return the user name of the profile
+         */
+
     public String getUser() {
         return user;
     }
+
+        /**
+         * Returns the name of the profile owner.
+         *
+         * @return the name of the profile owner
+         */
+
     public String getName() {
         return name;
     }
+
+        /**
+         * Returns the surname of the profile owner.
+         *
+         * @return the surname of the profile owner
+         */
+
     public String getSurname() {
         return surname;
     }
+
+        /**
+         * Returns the list of publications for the profile.
+         *
+         * @return the list of publications for the profile
+         */
+
     public ArrayList<Publication> getPublications() {
         return publications;
     }
+
+        /**
+         * Returns the list of albums for the profile.
+         *
+         * @return the list of albums for the profile
+         */
+
     public ArrayList<Album> getAlbums() {
         return albums;
     }
 
-    //Methods
+        /**
+         * Sorts the list of publications in ascending order based on their names.
+         *
+         * @param publi the list of publications to be sorted
+         */
+
     public void sortPublicationsAscending(List<Publication> publi){
         Collections.sort(publi, new PublicationNameComparator());
     }
+
+        /**
+         * Sorts the list of publications in descending order based on their likes.
+         *
+         * @param publi the list of publications to be sorted
+         */
 
     public void sortPublicationDescending(ArrayList<Publication> publi){
         Collections.sort(publi, new PublicationLikesComparator().reversed());
     }
 
+        /**
+         * Sorts the list of albums in ascending order based on their names.
+         *
+         * @param albums the list of albums to be sorted
+         */
+
     public void sortAlbumsAscending(ArrayList<Album> albums){
         Collections.sort(albums, new AlbumNameComparator());
     }
 
+        /**
+         * Creates a new album with the given name and adds it to the profile's list of albums.
+         *
+         * @param albumName the name of the new album
+         */
 
     public void createAlbum(String albumName){
         Album newAlbum = new Album(albumName);
@@ -85,6 +189,12 @@ public class InstagramProfile {
         else
             this.albums.add(newAlbum);
     }
+
+        /**
+         * Deletes the album with the given name from the profile's list of albums.
+         *
+         * @param albumName the name of the album to be deleted
+         */
 
     public void deleteAlbum(String albumName){
         Album albumDelete = searchAlbumByName(this.albums,albumName);
@@ -102,6 +212,14 @@ public class InstagramProfile {
         }
     }
 
+        /**
+         * Searches for an album with the given name in the list of albums.
+         *
+         * @param albums     the list of albums to search in
+         * @param albumName  the name of the album to search for
+         * @return the found album or null if not found
+         */
+
     public Album searchAlbumByName(ArrayList<Album> albums, String albumName){
         for(Album alb : albums){
             if (alb.getAlbumName().equals(albumName)){
@@ -111,6 +229,14 @@ public class InstagramProfile {
         return null;
     }
 
+        /**
+         * Searches for a sub-album with the given name in the specified album.
+         *
+         * @param fatherAlbum   the album to search within
+         * @param subAlbumName  the name of the sub-album to search for
+         * @return the found sub-album or null if not found
+         */
+
     public Album searchSubAlbumByName(Album fatherAlbum, String subAlbumName){
         for(Album subAlb : fatherAlbum.getSubAlbums()){
             if(subAlb.getAlbumName().equals(subAlbumName))
@@ -118,6 +244,14 @@ public class InstagramProfile {
         }
         return null;
     }
+
+        /**
+         * Searches for a publication with the given name in the specified list of publications.
+         *
+         * @param publications the list of publications to search in
+         * @param publiName    the name of the publication to search for
+         * @return the found publication or null if not found
+         */
 
     public Publication searchPubliByName(ArrayList<Publication> publications, String publiName){
         for(Publication pub : publications){
@@ -127,6 +261,15 @@ public class InstagramProfile {
         }
         return null;
     }
+
+        /**
+         * Adds a sub-album to an existing album in the profile.
+         * If the sub-album already exists, it is added to the album.
+         * If the sub-album doesn't exist, a new sub-album is created and added to the album.
+         *
+         * @param album    the name of the album to add the sub-album to
+         * @param subAlbum the name of the sub-album to be added
+         */
 
     public void addSubalbumToAlbum(String album, String subAlbum){
         Album albumAux = searchAlbumByName(this.albums,album);
@@ -146,6 +289,13 @@ public class InstagramProfile {
             System.out.println("Album no Existe");
     }
 
+        /**
+         * Adds a publication to an existing album in the profile.
+         *
+         * @param albumName  the name of the album to add the publication to
+         * @param publiName  the name of the publication to be added
+         */
+
     public void addPubliToAlbum(String albumName,String publiName){
         Album albumAux = searchAlbumByName(this.albums,albumName);
         if(albumAux != null){
@@ -158,6 +308,14 @@ public class InstagramProfile {
         else
             System.out.println("Album no Existe");
     }
+
+        /**
+         * Adds a publication to a sub-album of an existing album in the profile.
+         *
+         * @param albumName     the name of the album that contains the sub-album
+         * @param subAlbumName  the name of the sub-album to add the publication to
+         * @param publiName     the name of the publication to be added
+         */
 
     public void addPubliToSubAlbum(String albumName, String subAlbumName, String publiName){
         Publication publiAux = searchPubliByName(this.publications,publiName);
@@ -176,6 +334,13 @@ public class InstagramProfile {
             System.out.println("Publicacion no Existe");
     }
 
+        /**
+         * Deletes a publication from an existing album in the profile.
+         *
+         * @param albumName  the name of the album to delete the publication from
+         * @param publiName  the name of the publication to be deleted
+         */
+
     public void deletePubliFromAlbum(String albumName,String publiName){
         Album albumAux = searchAlbumByName(this.albums,albumName);
         if(albumAux != null){
@@ -189,6 +354,12 @@ public class InstagramProfile {
         else
             System.out.println("Album no Existe");
     }
+
+        /**
+         * Displays the statistics of likes for the given list of publications.
+         *
+         * @param publications the list of publications to display the statistics for
+         */
 
     public void showLikesStatistics(ArrayList<Publication> publications){
         int likesAudio = 0;
