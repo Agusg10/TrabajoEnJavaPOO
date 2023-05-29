@@ -1,6 +1,9 @@
 package GUI;
 import DomainClasses.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,39 +42,66 @@ public class PublicationMenu {
                     break;
                 case 2:
                     //busca mediante filtros
-                    List<Publication> originalPublications = profile.getPublications();
-                    List<String> attributes = List.of("Likes", "Duration", "uploadDate", "Hashtags");
-                    Filters filters = new Filters(attributes, originalPublications);
-                    System.out.println("Ingrese por cual de estos 4 atributos quiere filtrar: Likes, Duration, uploadDate, Hashtags");
-                    String FilterName=scanner.next();
-                    List<Publication> filterPublications;
-                    switch (FilterName){
-                        case "Likes":
-                            System.out.println("Ingrese una cantidad de likes y se mostrarán las publicaciones que superen ese número");
-                            String LikesNumber=scanner.next();
-                            filterPublications = filters.filterPublications("Likes", LikesNumber);
-                        break;
-                        case "Duration":
-                            System.out.println("Ingrese una Duracion en segundos y se mostrarán las publicaciones que superen ese número");
-                            String Seconds=scanner.next();
-                            filterPublications = filters.filterPublications("Duration", Seconds);
-                        break;
-                        case "uploadDate":
-                            System.out.println("Ingrese una fecha y se mostraran las publicaciones correspondientes a esa fecha");
-                            String FilterDate=scanner.next();
-                            filterPublications = filters.filterPublications("uploadDate", "28/7/2023");// es el unico filtro que no funciona, creo que es por como se almacena el tipo date
-                        break;
-                        case "Hashtags":
-                            System.out.println("Ingrese un Hashtag y se mostrarán las publicaciones que tengan dicho Hashtag");
-                            String HashtagFilter=scanner.next();
-                            filterPublications = filters.filterPublications("Hashtags", HashtagFilter);
-                        break;
-                        default:filterPublications=originalPublications;
+                    System.out.println("Ingrese el filtro de búsqueda (likes, duration, uploaddate, hashtags):");
+                    String filter = scanner.next();
+                    List<Publication> filterPublications = new ArrayList<>();
+                    switch (filter) {
+
+                        case "likes":
+                            System.out.println("Ingrese la cantidad mínima de likes:");
+                            int minLikes = scanner.nextInt();
+                            filterPublications = Filters.filterByLikes(profile.getPublications(), minLikes);
+                            break;
+
+                        case "duration":
+                            System.out.println("Ingrese la duración máxima en segundos:");
+                            int maxDuration = scanner.nextInt();
+                            filterPublications = Filters.filterByDuration(profile.getPublications(), maxDuration);
+                            break;
+
+                        case "uploaddate":
+                            System.out.println("Ingrese una fecha inicial(dd/MM/yyyy):");
+                            String dateStringMin = scanner.next();
+                            Date uploadDateMin;
+                            try {
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                uploadDateMin = dateFormat.parse(dateStringMin);
+                            } catch (ParseException e) {
+                                System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                                break;
+                            }
+
+
+                            System.out.println("Ingrese una fecha final(dd/MM/yyyy):");
+                            String dateStringMax = scanner.next();
+                            Date uploadDateMax;
+                            try {
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                uploadDateMax = dateFormat.parse(dateStringMax);
+                            } catch (ParseException e) {
+                                System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                                break;
+                            }
+
+                            filterPublications = Filters.filterByUploadDate(profile.getPublications(), uploadDateMin, uploadDateMax);
+                            break;
+
+                        case "hashtags":
+                            System.out.println("Ingrese el hashtag:");
+                            String hashtag = scanner.next();
+                            filterPublications = Filters.filterByHashtag(profile.getPublications(), hashtag);
+                            break;
+
+                        default:
+                            System.out.println("Filtro de búsqueda inválido.");
+                            filterPublications = profile.getPublications();
+                            break;
                     }
-                    for (Publication publication : filterPublications) {
-                        System.out.println(publication);
+                    for (Publication publication : filterPublications){
+                        System.out.println(publication.getPublicationName());
                     }
                     break;
+
                 case 3:
                     System.out.println(profile.getPublications().toString());
                     break;

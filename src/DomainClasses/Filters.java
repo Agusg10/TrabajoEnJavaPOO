@@ -1,46 +1,62 @@
 package DomainClasses;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Filters {
-    private List<String> attributes;
-    private List<Publication> originalPublications;
 
-    public Filters(List<String> attributes, List<Publication> originalPublications) {
-        this.attributes = attributes;
-        this.originalPublications = originalPublications;
-    }
-
-    public List<Publication> filterPublications(String attribute, String value) {
-        List<Publication> filterPublications = new ArrayList<>();
-
-        for (Publication publication : originalPublications) {
-            if (equalsFilter(publication, attribute, value)) {
-                filterPublications.add(publication);
+    public static ArrayList<Publication> filterByLikes(ArrayList<Publication> publications, int minLikes) {
+        ArrayList<Publication> filteredPublications = new ArrayList<>();
+        for (Publication publication : publications) {
+            if (publication.getLikes() >= minLikes) {
+                filteredPublications.add(publication);
             }
         }
-
-        return filterPublications;
+        return filteredPublications;
     }
 
-    private boolean equalsFilter(Publication publication, String attribute, String value) {
-        switch (attribute) {
-            case "Likes":
-                return publication.getLikes() >= Integer.parseInt(value);
-            case "Duration":
-                if (publication instanceof Video)
-                    return ((Video) publication).getDuration() >= Integer.parseInt(value);
-                else
-                if (publication instanceof Audio)
-                    return ((Audio) publication).getDuration() >= Integer.parseInt(value);
-            case "uploadDate":
-                String OriginalDate=publication.getUploadDate().toString();
-                return OriginalDate.equals(value);
-            case "Hashtags":
-                return publication.getHashtags().contains(value);
-            default:
-                return false;
+    public static ArrayList<Publication> filterByDuration(List<Publication> publications, int maxDuration) {
+        ArrayList<Publication> filteredPublications = new ArrayList<>();
+        for (Publication publication : publications) {
+            if (publication instanceof Video) {
+                if (((Video) publication).getDuration() <= maxDuration) {
+                    filteredPublications.add(publication);
+                }
+            } else if (publication instanceof Audio) {
+                if (((Audio)publication).getDuration() <= maxDuration) {
+                    filteredPublications.add(publication);
+                }
+            }
         }
+        return filteredPublications;
     }
+
+
+
+    public static ArrayList<Publication> filterByUploadDate(List<Publication> publications, Date uploadDateMin, Date uploadDateMax) {
+        ArrayList<Publication> filteredPublications = new ArrayList<>();
+        for (Publication publication : publications) {
+            Date uploadDate = publication.getUploadDate();
+            if ((uploadDate.after(uploadDateMin) || uploadDate.equals(uploadDateMin)) && (uploadDate.before(uploadDateMax) || uploadDate.equals(uploadDateMax))) {
+                filteredPublications.add(publication);
+            }
+        }
+        return filteredPublications;
+    }
+
+
+    public static ArrayList<Publication> filterByHashtag(List<Publication> publications, String hashtag) {
+        ArrayList<Publication> filteredPublications = new ArrayList<>();
+        for (Publication publication : publications) {
+            if (publication.getHashtags().contains(hashtag)) {
+                filteredPublications.add(publication);
+            }
+        }
+        return filteredPublications;
+    }
+
+
+
 }
