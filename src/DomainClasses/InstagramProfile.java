@@ -364,6 +364,51 @@ public class InstagramProfile {
             }
         }
     }
+    public void showPublicationsAudio(){
+        if (publications == null || publications.isEmpty()){
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones de Audio:");
+            for (Publication publication : publications){
+                if(publication instanceof Audio)
+                    System.out.println(publication.getPublicationName());
+            }
+        }
+    }
+
+    public void showPublicationsImage(){
+        if (publications == null || publications.isEmpty()){
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones de Imagen:");
+            for (Publication publication : publications){
+                if(publication instanceof Image)
+                    System.out.println("- "+publication.getPublicationName());
+            }
+        }
+    }
+    public void showPublicationsText(){
+        if (publications == null || publications.isEmpty()){
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones de Texto:");
+            for (Publication publication : publications){
+                if(publication instanceof Text)
+                    System.out.println("- "+publication.getPublicationName());
+            }
+        }
+    }
+    public void showPublicationsVideo(){
+        if (publications == null || publications.isEmpty()){
+            System.out.println("No existen publicaciones disponibles.");
+        } else {
+            System.out.println("Publicaciones de Video:");
+            for (Publication publication : publications){
+                if(publication instanceof Video)
+                    System.out.println("- "+publication.getPublicationName());
+            }
+        }
+    }
 
     //toString
     public String toString() {

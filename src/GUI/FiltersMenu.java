@@ -37,6 +37,7 @@ public class FiltersMenu {
 
             switch(opcion){
                 case 1:
+                    profile.showPublicationsText();
                     System.out.println("Ingrese nombre de Texto que quiere aplicar Filtro");
                     scanner = new Scanner(System.in);
                     namePubliToSearch = scanner.nextLine();
@@ -50,6 +51,7 @@ public class FiltersMenu {
                         System.out.println("La publicacion " + namePubliToSearch + " no existe");
                     break;
                 case 2:
+                    profile.showPublicationsImage();
                     System.out.println("Ingrese nombre de Imagen que quiere aplicar Filtro");
                     scanner = new Scanner(System.in);
                     namePubliToSearch = scanner.nextLine();
@@ -63,6 +65,7 @@ public class FiltersMenu {
                         System.out.println("La publicacion " + namePubliToSearch + " no existe");
                     break;
                 case 3:
+                    profile.showPublicationsVideo();
                     System.out.println("Ingrese nombre de Video que quiere aplicar Filtro");
                     scanner = new Scanner(System.in);
                     namePubliToSearch = scanner.nextLine();
