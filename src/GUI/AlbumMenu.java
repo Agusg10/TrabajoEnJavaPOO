@@ -70,16 +70,21 @@ public class AlbumMenu {
                             System.out.println("Álbum agregado con éxito.");
                             break;
                         case 2: //AGREGA SUBALBUM
-                            System.out.println("Albumes disponibles:");
-                            profile.showAlbumsAndSubAlbums();
-                            System.out.print("Ingrese el nombre del álbum al que quiere agregar: ");
-                            albumName = scanner.nextLine();
-                            if(profile.searchAlbumByName(profile.getAlbums(), albumName) == null){
-                                System.out.println("Album no existe");
-                            } else{
-                                System.out.print("Ingrese el nombre del SubAlbum que quiere agregar: ");
-                                subAlbumName = scanner.nextLine();
-                                profile.addSubalbumToAlbum(albumName,subAlbumName);
+                            if(profile.getAlbums() == null){
+                                System.out.println("No existen albumes disponibles, crea uno");
+                            }
+                            else{
+                                System.out.println("Albumes disponibles:");
+                                profile.showAlbumsAndSubAlbums();
+                                System.out.print("Ingrese el nombre del álbum al que quiere agregar: ");
+                                albumName = scanner.nextLine();
+                                if(profile.searchAlbumByName(profile.getAlbums(), albumName) == null){
+                                    System.out.println("Album no existe");
+                                } else {
+                                    System.out.print("Ingrese el nombre del SubAlbum que quiere agregar: ");
+                                    subAlbumName = scanner.nextLine();
+                                    profile.addSubalbumToAlbum(albumName, subAlbumName);
+                                }
                             }
                             break;
                         case 3:
