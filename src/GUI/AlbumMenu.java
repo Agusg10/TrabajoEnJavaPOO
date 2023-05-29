@@ -95,43 +95,47 @@ public class AlbumMenu {
                     break;
                 case 3:
                     try {
-                        profile.showPublications();
-                        System.out.print("Ingrese el número de la publicación que desea agregar a los álbumes: ");
-                        int publicationNumber = scanner.nextInt();
-                        scanner.nextLine();
+                        if(profile.getAlbums() == null)
+                            System.out.println("NO hay albumes para agregar");
+                        else {
+                            profile.showPublications();
+                            System.out.print("Ingrese el número de la publicación que desea agregar a los álbumes: ");
+                            int publicationNumber = scanner.nextInt();
+                            scanner.nextLine();
 
-                        Publication selectedPublication = profile.getPublications().get(publicationNumber - 1);
+                            Publication selectedPublication = profile.getPublications().get(publicationNumber - 1);
 
-                        profile.showAlbums();
-                        System.out.print("Ingrese el nombre del álbum al que desea agregar la publicación: ");
-                        albumName = scanner.nextLine();
+                            profile.showAlbums();
+                            System.out.print("Ingrese el nombre del álbum al que desea agregar la publicación: ");
+                            albumName = scanner.nextLine();
 
-                        Album selectedAlbum = profile.searchAlbumByName(profile.getAlbums(), albumName);
+                            Album selectedAlbum = profile.searchAlbumByName(profile.getAlbums(), albumName);
 
-                        if (selectedAlbum != null) {
-                            profile.showSubAlbums(selectedAlbum, "-");
+                            if (selectedAlbum != null) {
+                                profile.showSubAlbums(selectedAlbum, "-");
 
-                            System.out.print("Ingrese el nombre del subálbum al que desea agregar la publicación (deje vacío para agregar al álbum principal): ");
-                            subAlbumName = scanner.nextLine();
+                                System.out.print("Ingrese el nombre del subálbum al que desea agregar la publicación (deje vacío para agregar al álbum principal): ");
+                                subAlbumName = scanner.nextLine();
 
-                            Album targetAlbum;
-                            if (subAlbumName.isEmpty()) {
-                                targetAlbum = selectedAlbum;
-                            } else {
-                                Album subAlbum = profile.searchAlbumByName(selectedAlbum.getSubAlbums(), subAlbumName);
-
-                                if (subAlbum != null) {
-                                    targetAlbum = subAlbum;
+                                Album targetAlbum;
+                                if (subAlbumName.isEmpty()) {
+                                    targetAlbum = selectedAlbum;
                                 } else {
-                                    System.out.println("El subálbum no existe.");
-                                    break;
-                                }
-                            }
-                            targetAlbum.addPubli(selectedPublication);
+                                    Album subAlbum = profile.searchAlbumByName(selectedAlbum.getSubAlbums(), subAlbumName);
 
-                            System.out.println("La publicación se ha agregado con éxito al álbum.");
-                        } else {
-                            System.out.println("El álbum no existe.");
+                                    if (subAlbum != null) {
+                                        targetAlbum = subAlbum;
+                                    } else {
+                                        System.out.println("El subálbum no existe.");
+                                        break;
+                                    }
+                                }
+                                targetAlbum.addPubli(selectedPublication);
+
+                                System.out.println("La publicación se ha agregado con éxito al álbum.");
+                            } else {
+                                System.out.println("El álbum no existe.");
+                            }
                         }
                     } catch (Exception e) {
                         System.out.println("Se produjo un error al procesar la opción. Por favor, intentelo nuevamente.");
@@ -140,67 +144,72 @@ public class AlbumMenu {
                     break;
                 case 4:
                     try {
-                        profile.showAlbums();
-                        System.out.print("Ingrese el nombre del álbum: ");
-                        String clean = scanner.nextLine();
-                        albumName = scanner.nextLine();
+                        if(profile.getAlbums() == null){
+                            System.out.println("NO existen Albumes");
+                        }
+                        else{
+                            profile.showAlbums();
+                            System.out.print("Ingrese el nombre del álbum: ");
+                            String clean = scanner.nextLine();
+                            albumName = scanner.nextLine();
 
-                        // Buscar el álbum principal y sus subálbumes
-                        Album selectedAlbum = profile.searchAlbumByName(profile.getAlbums(), albumName);
+                            // Buscar el álbum principal y sus subálbumes
+                            Album selectedAlbum = profile.searchAlbumByName(profile.getAlbums(), albumName);
 
-                        if (selectedAlbum != null) {
+                            if (selectedAlbum != null) {
 
-                            System.out.println("¿Desea sacar la publicación del álbum principal o de uno de sus subálbumes?");
-                            System.out.println("1. Álbum principal");
-                            System.out.println("2. Subálbum");
-                            System.out.print("Opción: ");
-                            int option = Integer.parseInt(scanner.nextLine());
+                                System.out.println("¿Desea sacar la publicación del álbum principal o de uno de sus subálbumes?");
+                                System.out.println("1. Álbum principal");
+                                System.out.println("2. Subálbum");
+                                System.out.print("Opción: ");
+                                int option = Integer.parseInt(scanner.nextLine());
 
-                            if (option == 1) {
+                                if (option == 1) {
 
-                                selectedAlbum.showPublicationsAlbum();
-                                System.out.print("Ingrese el nombre de la publicación que desea sacar del álbum: ");
-                                String publicationName = scanner.nextLine();
-                                Publication selectedPublication = profile.searchPubliByName(selectedAlbum.getPublications(), publicationName);
+                                    selectedAlbum.showPublicationsAlbum();
+                                    System.out.print("Ingrese el nombre de la publicación que desea sacar del álbum: ");
+                                    String publicationName = scanner.nextLine();
+                                    Publication selectedPublication = profile.searchPubliByName(selectedAlbum.getPublications(), publicationName);
 
-                                if (selectedPublication != null) {
-                                    selectedAlbum.deletePubli(selectedPublication);
-                                    System.out.println("La publicación se ha sacado del álbum principal exitosamente.");
-                                } else {
-                                    System.out.println("La publicación no existe en el álbum principal.");
-                                }
-                            } else if (option == 2) {
+                                    if (selectedPublication != null) {
+                                        selectedAlbum.deletePubli(selectedPublication);
+                                        System.out.println("La publicación se ha sacado del álbum principal exitosamente.");
+                                    } else {
+                                        System.out.println("La publicación no existe en el álbum principal.");
+                                    }
+                                } else if (option == 2) {
 
-                                System.out.println("Subálbumes disponibles:");
-                                profile.showSubAlbums(selectedAlbum, "- ");
-                                System.out.print("Ingrese el nombre del subálbum: ");
-                                subAlbumName = scanner.nextLine();
-                                Album selectedSubAlbum = profile.searchAlbumByName(selectedAlbum.getSubAlbums(), subAlbumName);
+                                    System.out.println("Subálbumes disponibles:");
+                                    profile.showSubAlbums(selectedAlbum, "- ");
+                                    System.out.print("Ingrese el nombre del subálbum: ");
+                                    subAlbumName = scanner.nextLine();
+                                    Album selectedSubAlbum = profile.searchAlbumByName(selectedAlbum.getSubAlbums(), subAlbumName);
 
-                                if (selectedSubAlbum != null) {
-                                    if (selectedSubAlbum.getPublications() != null && !selectedSubAlbum.getPublications().isEmpty()) {
-                                        selectedSubAlbum.showPublicationsAlbum();
-                                        System.out.print("Ingrese el nombre de la publicación que desea sacar del subálbum: ");
-                                        String publicationName = scanner.nextLine();
-                                        Publication selectedPublication = profile.searchPubliByName(selectedSubAlbum.getPublications(), publicationName);
+                                    if (selectedSubAlbum != null) {
+                                        if (selectedSubAlbum.getPublications() != null && !selectedSubAlbum.getPublications().isEmpty()) {
+                                            selectedSubAlbum.showPublicationsAlbum();
+                                            System.out.print("Ingrese el nombre de la publicación que desea sacar del subálbum: ");
+                                            String publicationName = scanner.nextLine();
+                                            Publication selectedPublication = profile.searchPubliByName(selectedSubAlbum.getPublications(), publicationName);
 
-                                        if (selectedPublication != null) {
-                                            selectedSubAlbum.deletePubli(selectedPublication);
-                                            System.out.println("La publicación se ha sacado del subálbum exitosamente.");
+                                            if (selectedPublication != null) {
+                                                selectedSubAlbum.deletePubli(selectedPublication);
+                                                System.out.println("La publicación se ha sacado del subálbum exitosamente.");
+                                            } else {
+                                                System.out.println("La publicación no existe en el subálbum.");
+                                            }
                                         } else {
-                                            System.out.println("La publicación no existe en el subálbum.");
+                                            System.out.println("El subálbum está vacío. No se pueden eliminar publicaciones.");
                                         }
                                     } else {
-                                        System.out.println("El subálbum está vacío. No se pueden eliminar publicaciones.");
+                                        System.out.println("El subálbum no existe en el álbum principal.");
                                     }
                                 } else {
-                                    System.out.println("El subálbum no existe en el álbum principal.");
+                                    System.out.println("Opción inválida.");
                                 }
                             } else {
-                                System.out.println("Opción inválida.");
+                                System.out.println("El álbum no existe.");
                             }
-                        } else {
-                            System.out.println("El álbum no existe.");
                         }
                     } catch (Exception e) {
                         System.out.println("Se produjo un error al procesar la opción. Por favor, inténtelo nuevamente.");

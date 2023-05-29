@@ -35,7 +35,7 @@ public class InstagramProfile {
     }
 
         /**
-         * Sets the user name of the profile.
+         * Sets the username of the profile.
          *
          * @param user the user name to set
          */
