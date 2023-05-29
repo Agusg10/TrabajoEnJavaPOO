@@ -92,11 +92,14 @@ public class AlbumMenu {
                     }
                     break;
                 case 2:
-                    profile.showAlbumsAndSubAlbums();
-                    System.out.println("Ingrese el nombre del album a eliminar: ");
-                    scanner.nextLine();
-                    albumName = scanner.nextLine();
-                    profile.deleteAlbum(albumName);
+                    if (profile.getAlbums() != null) {
+                        profile.showAlbumsAndSubAlbums();
+                        System.out.println("Ingrese el nombre del album a eliminar: ");
+                        scanner.nextLine();
+                        albumName = scanner.nextLine();
+                        profile.deleteAlbum(albumName);
+                    }else
+                        System.out.println("No existen albums disponibles");
                     break;
                 case 3:
                     try {
