@@ -4,15 +4,26 @@ import DomainClasses.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+
+ The ProfileMenu class represents the user interface for the profile menu of an Instagram profile.
+ It allows users to interact with various profile-related features and options.
+ */
+
 public class ProfileMenu{
     private InstagramProfile prof;
     private Scanner scanner;
-
+    /**
+     * Constructs a ProfileMenu object with the specified InstagramProfile.
+     * @param profile the InstagramProfile object associated with the menu
+     */
     public ProfileMenu(InstagramProfile profile) {
         this.prof = profile;
         scanner = new Scanner(System.in);
     }
-
+    /**
+     * Displays the profile menu and handles user input and interaction.
+     */
     public void displayMenu() {
         System.out.println("################################");
         System.out.println("|                              |");

@@ -6,16 +6,27 @@ import DomainClasses.Publication;
 
 import java.util.Scanner;
 
+/**
+
+ The AlbumMenu class represents the user interface for the album menu of an Instagram profile.
+ It allows users to manage albums and add/remove publications from albums.
+ */
 
 public class AlbumMenu {
     private InstagramProfile profile;
     private Scanner scanner;
-
+    /**
+     * Constructs an AlbumMenu object with the specified InstagramProfile.
+     * @param profile the InstagramProfile object associated with the menu
+     */
     public AlbumMenu(InstagramProfile profile){
         this.profile = profile;
         scanner = new Scanner(System.in);
     }
-
+    /**
+     * Displays the album menu and handles the album management process.
+     * @throws InterruptedException if an interrupted exception occurs
+     */
     public void displayMenu() throws InterruptedException {
 
         System.out.println("#################################");

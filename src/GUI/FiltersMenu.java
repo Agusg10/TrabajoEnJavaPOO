@@ -5,16 +5,26 @@ import DomainClasses.Publication;
 import DomainClasses.*;
 
 import java.util.Scanner;
+/**
 
+ The FiltersMenu class represents the user interface for the filters menu of an Instagram profile.
+ It allows users to apply filters to their publications based on the publication type.
+ */
 public class FiltersMenu {
     private InstagramProfile profile;
     private Scanner scanner;
-
+    /**
+     * Constructs a FiltersMenu object with the specified InstagramProfile.
+     * @param profile the InstagramProfile object associated with the menu
+     */
     public FiltersMenu(InstagramProfile profile) {
         this.profile = profile;
         scanner = new Scanner(System.in);
     }
-
+    /**
+     * Displays the filters menu and handles the filter application process.
+     * @throws InterruptedException if an interrupted exception occurs
+     */
     public void displayMenu() throws InterruptedException {
 
         System.out.println("#################################");

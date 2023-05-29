@@ -4,15 +4,27 @@ import DomainClasses.InstagramProfile;
 
 import java.util.Scanner;
 
+/**
+ * The StatisticsMenu class represents a menu for displaying statistics related to an Instagram profile.
+ */
 public class StatisticsMenu {
+
     private InstagramProfile prof;
     private Scanner scanner;
 
+    /**
+     * Constructs a StatisticsMenu object with the specified InstagramProfile.
+     *
+     * @param prof the InstagramProfile object for which the statistics menu is created
+     */
     public StatisticsMenu(InstagramProfile prof) {
         this.prof = prof;
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * Displays the statistics menu and handles user input.
+     */
     public void displayMenu() {
 
         System.out.println("#################################");
@@ -44,7 +56,8 @@ public class StatisticsMenu {
                     System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
                     break;
             }
-        }while(!back);
+        } while (!back);
     }
 }
+
 

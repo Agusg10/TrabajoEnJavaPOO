@@ -8,13 +8,30 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/**
+ * The PublicationMenu class represents a menu for handling operations related to publications in an Instagram profile.
+ */
 public class PublicationMenu {
+
     private InstagramProfile profile;
     private Scanner scanner;
+
+    /**
+     * Constructs a PublicationMenu object with the specified InstagramProfile.
+     *
+     * @param profile the InstagramProfile object for which the publication menu is created
+     */
     public PublicationMenu(InstagramProfile profile){
         this.profile = profile;
         scanner = new Scanner(System.in);
     }
+
+    /**
+     * Displays the publication menu and handles user input.
+     *
+     * @throws InterruptedException if the thread is interrupted
+     */
     public void displayMenu() throws InterruptedException {
 
         System.out.println("#################################");
@@ -37,83 +54,83 @@ public class PublicationMenu {
                 System.out.print("Opción: ");
                 opcion = scanner.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    FiltersMenu filtersMenu = new FiltersMenu(profile);
-                    filtersMenu.displayMenu();
-                    break;
-                case 2:
-                    //busca mediante filtros
-                    System.out.println("Ingrese el filtro de búsqueda (likes, duration, uploaddate, hashtags):");
-                    String filter = scanner.next();
-                    List<Publication> filterPublications = new ArrayList<>();
-                    switch (filter) {
+                switch (opcion) {
+                    case 1:
+                        FiltersMenu filtersMenu = new FiltersMenu(profile);
+                        filtersMenu.displayMenu();
+                        break;
+                    case 2:
+                        // busca mediante filtros
+                        System.out.println("Ingrese el filtro de búsqueda (likes, duration, uploaddate, hashtags):");
+                        String filter = scanner.next();
+                        List<Publication> filterPublications = new ArrayList<>();
+                        switch (filter) {
 
-                        case "likes":
-                            System.out.println("Ingrese la cantidad mínima de likes:");
-                            int minLikes = scanner.nextInt();
-                            filterPublications = Filters.filterByLikes(profile.getPublications(), minLikes);
-                            break;
-
-                        case "duration":
-                            System.out.println("Ingrese la duración máxima en segundos:");
-                            int maxDuration = scanner.nextInt();
-                            filterPublications = Filters.filterByDuration(profile.getPublications(), maxDuration);
-                            break;
-
-                        case "uploaddate":
-                            System.out.println("Ingrese una fecha inicial(dd/MM/yyyy):");
-                            String dateStringMin = scanner.next();
-                            Date uploadDateMin;
-                            try {
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                uploadDateMin = dateFormat.parse(dateStringMin);
-                            } catch (ParseException e) {
-                                System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                            case "likes":
+                                System.out.println("Ingrese la cantidad mínima de likes:");
+                                int minLikes = scanner.nextInt();
+                                filterPublications = Filters.filterByLikes(profile.getPublications(), minLikes);
                                 break;
-                            }
 
-
-                            System.out.println("Ingrese una fecha final(dd/MM/yyyy):");
-                            String dateStringMax = scanner.next();
-                            Date uploadDateMax;
-                            try {
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                                uploadDateMax = dateFormat.parse(dateStringMax);
-                            } catch (ParseException e) {
-                                System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                            case "duration":
+                                System.out.println("Ingrese la duración máxima en segundos:");
+                                int maxDuration = scanner.nextInt();
+                                filterPublications = Filters.filterByDuration(profile.getPublications(), maxDuration);
                                 break;
-                            }
 
-                            filterPublications = Filters.filterByUploadDate(profile.getPublications(), uploadDateMin, uploadDateMax);
-                            break;
+                            case "uploaddate":
+                                System.out.println("Ingrese una fecha inicial(dd/MM/yyyy):");
+                                String dateStringMin = scanner.next();
+                                Date uploadDateMin;
+                                try {
+                                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                    uploadDateMin = dateFormat.parse(dateStringMin);
+                                } catch (ParseException e) {
+                                    System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                                    break;
+                                }
 
-                        case "hashtags":
-                            System.out.println("Ingrese el hashtag:");
-                            String hashtag = scanner.next();
-                            filterPublications = Filters.filterByHashtag(profile.getPublications(), hashtag);
-                            break;
 
-                        default:
-                            System.out.println("Filtro de búsqueda inválido.");
-                            filterPublications = profile.getPublications();
-                            break;
-                    }
-                    for (Publication publication : filterPublications){
-                        System.out.println(publication.getPublicationName());
-                    }
-                    break;
+                                System.out.println("Ingrese una fecha final(dd/MM/yyyy):");
+                                String dateStringMax = scanner.next();
+                                Date uploadDateMax;
+                                try {
+                                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                    uploadDateMax = dateFormat.parse(dateStringMax);
+                                } catch (ParseException e) {
+                                    System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+                                    break;
+                                }
 
-                case 3:
-                    System.out.println(profile.getPublications().toString());
-                    break;
-                case 4:
-                    Publication publiToSearch;
-                    String namePubliToSearch;
-                    System.out.println("Ingrese nombre de Publicacion que quiere reproducir (SOLO AUDIO/VIDEO)");
-                    scanner = new Scanner(System.in);
-                    namePubliToSearch = scanner.nextLine();
-                    publiToSearch = profile.searchPubliByName(profile.getPublications(),namePubliToSearch);
+                                filterPublications = Filters.filterByUploadDate(profile.getPublications(), uploadDateMin, uploadDateMax);
+                                break;
+
+                            case "hashtags":
+                                System.out.println("Ingrese el hashtag:");
+                                String hashtag = scanner.next();
+                                filterPublications = Filters.filterByHashtag(profile.getPublications(), hashtag);
+                                break;
+
+                            default:
+                                System.out.println("Filtro de búsqueda inválido.");
+                                filterPublications = profile.getPublications();
+                                break;
+                        }
+                        for (Publication publication : filterPublications){
+                            System.out.println(publication.getPublicationName());
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println(profile.getPublications().toString());
+                        break;
+                    case 4:
+                        Publication publiToSearch;
+                        String namePubliToSearch;
+                        System.out.println("Ingrese nombre de Publicacion que quiere reproducir (SOLO AUDIO/VIDEO)");
+                        scanner = new Scanner(System.in);
+                        namePubliToSearch = scanner.nextLine();
+                        publiToSearch = profile.searchPubliByName(profile.getPublications(),namePubliToSearch);
 
                         if(publiToSearch != null) {
 
